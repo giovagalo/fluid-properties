@@ -2,7 +2,7 @@
 
 A free, offline calculator for the thermophysical properties of the most common HVAC&R fluids. It is a single HTML file that runs in any modern browser, with no installation, no server and no internet connection needed.
 
-**▶ Live tool:** https://USERNAME.github.io/fluid-properties/
+**▶ Live tool:** https://giovagalo.github.io/fluid-properties/
 
 ![Screenshot](screenshot.png)
 
@@ -58,7 +58,3 @@ Built with the help of AI (Claude by Anthropic). The engineering choices, refere
 - Melinder, Å. (2010), *Properties of Secondary Working Fluids for Indirect Systems*, IIR
 - Kell, G. S. (1975), *J. Chem. Eng. Data* 20(1), 97–105
 - ASHRAE Handbook – Fundamentals (2017)
-
-## License
-
-[MIT](LICENSE) © 2026 Giovanni Galoppi
