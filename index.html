@@ -6,24 +6,24 @@
 <style>
 /* Layout: two-panel bench — properties left, heat duty right; stacks below 860px */
 :root{
-  --bg:#eef2f7; --panel:#ffffff; --ink:#1B2F4B; --muted:#56657b; --line:#d3dbe6;
-  --accent:#335788; --accent-soft:#e2e9f3; --warn:#CD1414; --warn-soft:#fbe8e8;
-  --water:#335788; --eg:#CD1414; --pg:#8F0D0D;
-  --brand:#1B2F4B; --brand-2:#335788; --red:#CD1414; --red-dark:#8F0D0D; --on-brand:#ffffff; --on-brand-muted:#b9c7da;
+  --bg:#eef0f6; --panel:#ffffff; --ink:#15184A; --muted:#575b7c; --line:#d4d8e6;
+  --accent:#0D1382; --accent-soft:#e4e5f5; --warn:#8A0A14; --warn-soft:#f8e7e8;
+  --water:#0D1382; --eg:#8A0A14; --pg:#5056C8;
+  --brand:#070A4F; --brand-2:#0D1382; --red:#8A0A14; --red-dark:#8F0D0D; --on-brand:#ffffff; --on-brand-muted:#bcc3dc;
   --display:"Barlow Semi Condensed","Arial Narrow",system-ui,sans-serif;
   --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0c1524; --panel:#14233a; --ink:#e8eef6; --muted:#9dabc0; --line:#2a3d59;
-  --accent:#8eb0de; --accent-soft:#1f3556; --warn:#f26b6b; --warn-soft:#3b1717;
-  --water:#8eb0de; --eg:#f26b6b; --pg:#d44848;
-  --brand:#0f1c30; --brand-2:#335788; --red:#CD1414; --red-dark:#8F0D0D; --on-brand:#ffffff; --on-brand-muted:#a9b8cc; color-scheme:dark }}
+  --bg:#0b1020; --panel:#141a33; --ink:#e8ebf6; --muted:#a0a7c2; --line:#2b3358;
+  --accent:#a3a8f0; --accent-soft:#1f2560; --warn:#f2848d; --warn-soft:#3a1418;
+  --water:#a3a8f0; --eg:#f2848d; --pg:#9fb3d1;
+  --brand:#06093A; --brand-2:#0D1382; --red:#8A0A14; --red-dark:#8F0D0D; --on-brand:#ffffff; --on-brand-muted:#b0b8d4; color-scheme:dark }}
 :root[data-theme="dark"]{
-  --bg:#0c1524; --panel:#14233a; --ink:#e8eef6; --muted:#9dabc0; --line:#2a3d59;
-  --accent:#8eb0de; --accent-soft:#1f3556; --warn:#f26b6b; --warn-soft:#3b1717;
-  --water:#8eb0de; --eg:#f26b6b; --pg:#d44848;
-  --brand:#0f1c30; --brand-2:#335788; --red:#CD1414; --red-dark:#8F0D0D; --on-brand:#ffffff; --on-brand-muted:#a9b8cc; color-scheme:dark }
+  --bg:#0b1020; --panel:#141a33; --ink:#e8ebf6; --muted:#a0a7c2; --line:#2b3358;
+  --accent:#a3a8f0; --accent-soft:#1f2560; --warn:#f2848d; --warn-soft:#3a1418;
+  --water:#a3a8f0; --eg:#f2848d; --pg:#9fb3d1;
+  --brand:#06093A; --brand-2:#0D1382; --red:#8A0A14; --red-dark:#8F0D0D; --on-brand:#ffffff; --on-brand-muted:#b0b8d4; color-scheme:dark }
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
 .wrap{max-width:1120px;margin:0 auto;padding-block:28px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:22px}
@@ -95,12 +95,29 @@ input:disabled{opacity:.45}
 .airkv{border-top:1px solid var(--line);padding-top:12px}
 .airkv dd.in{color:var(--accent);font-weight:500}
 #psy{min-width:340px}
-.top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;background:linear-gradient(120deg,var(--brand) 0%,var(--brand) 55%,var(--brand-2) 100%);border-radius:12px;padding:22px 22px 20px;border-bottom:4px solid var(--red)}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;background:var(--brand-2);border-radius:12px;padding:22px 22px 20px;border-bottom:4px solid var(--red)}
 .tabs{display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(255,255,255,.06);flex-wrap:wrap}
 .tabs a{font-family:var(--display);font-weight:600;font-size:1rem;color:var(--on-brand-muted);text-decoration:none;padding:7px 16px;border-radius:7px}
 .tabs a:hover{color:var(--on-brand);background:rgba(255,255,255,.08)}
 .tabs a[aria-current="page"]{background:var(--red);color:#fff}
 .tabs a:focus-visible{outline:2px solid #fff;outline-offset:1px}
+.topr{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.units{gap:2px}
+.units button{font-family:var(--display);font-weight:600;font-size:1rem;color:var(--on-brand-muted);background:transparent;border:0;padding:7px 14px;border-radius:7px;cursor:pointer}
+.units button:hover{color:var(--on-brand);background:rgba(255,255,255,.08)}
+.units button[aria-pressed="true"]{background:#fff;color:var(--brand-2)}
+.units button:focus-visible{outline:2px solid #fff;outline-offset:1px}
+.inp select.unit.tsel{min-width:4.8em}
+/* Header on the same surface as the panels */
+header.top{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:10px;padding:20px 22px}
+header.top h1{color:var(--ink)}
+header.top p{color:var(--muted)}
+header.top .tabs{border-color:var(--line);background:var(--bg)}
+header.top .tabs a,header.top .units button{color:var(--muted)}
+header.top .tabs a:hover,header.top .units button:hover{color:var(--ink);background:var(--accent-soft)}
+header.top .tabs a[aria-current="page"]{background:var(--red);color:#fff}
+header.top .units button[aria-pressed="true"]{background:var(--brand-2);color:#fff}
+header.top .tabs a:focus-visible,header.top .units button:focus-visible{outline:2px solid var(--accent)}
 [hidden]{display:none!important}
 .page{display:flex;flex-direction:column;gap:22px}
 .seg4{grid-template-columns:repeat(4,1fr)}
@@ -135,11 +152,17 @@ input:disabled{opacity:.45}
       <h1>Fluid Properties</h1>
       <p id="subtitle"></p>
     </div>
-    <nav class="tabs" aria-label="Sections">
-      <a href="#liquidi" data-page="liquidi">Water &amp; glycols</a>
-      <a href="#aria" data-page="aria">Moist air</a>
-      <a href="#ref" data-page="ref">Refrigerants</a>
-    </nav>
+    <div class="topr">
+      <nav class="tabs" aria-label="Sections">
+        <a href="#liquidi" data-page="liquidi">Water &amp; glycols</a>
+        <a href="#aria" data-page="aria">Moist air</a>
+        <a href="#ref" data-page="ref">Refrigerants</a>
+      </nav>
+      <div class="tabs units" role="group" aria-label="Unit system" id="usys">
+        <button type="button" data-sys="si" aria-pressed="true" title="SI units: °C, bar, kW, m³/h, kJ/kg">SI</button>
+        <button type="button" data-sys="us" aria-pressed="false" title="US customary units: °F, psi, ton, gpm, Btu/lb">US</button>
+      </div>
+    </div>
   </header>
 
   <div class="page" id="page-liquidi">
@@ -158,13 +181,13 @@ input:disabled{opacity:.45}
 
       <div class="row">
         <div class="field">
-          <label for="pct">Glycol (by mass)</label>
-          <div class="inp"><input id="pct" type="number" min="0" max="60" step="0.1" value="30" inputmode="decimal"><span>%</span></div>
+          <label for="pct">Glycol concentration</label>
+          <div class="inp"><input id="pct" type="number" min="0" max="60" step="0.1" value="30" inputmode="decimal"><select id="pctu" class="unit" aria-label="Concentration basis"><option value="mass" selected>% mass</option><option value="vol">% vol</option></select></div>
           <input id="pctr" type="range" min="0" max="60" step="0.5" value="30" aria-label="Glycol percentage">
         </div>
         <div class="field">
           <label for="temp">Temperature</label>
-          <div class="inp"><input id="temp" type="number" min="-50" max="100" step="0.5" value="20" inputmode="decimal"><span>°C</span></div>
+          <div class="inp"><input id="temp" type="number" min="-50" max="100" step="0.5" value="20" inputmode="decimal"><select class="unit tsel" aria-label="Temperature unit"><option value="C">°C</option><option value="F">°F</option><option value="K">K</option></select></div>
           <input id="tempr" type="range" min="-50" max="100" step="0.5" value="20" aria-label="Temperature">
         </div>
       </div>
@@ -226,6 +249,9 @@ input:disabled{opacity:.45}
               <option value="kw" selected>kW</option>
               <option value="w">W</option>
               <option value="kcalh">kcal/h</option>
+              <option value="ton">ton</option>
+              <option value="btuh">Btu/h</option>
+              <option value="mbh">MBH</option>
             </select>
           </div>
         </div>
@@ -237,8 +263,10 @@ input:disabled{opacity:.45}
               <option value="m3h" selected>m³/h</option>
               <option value="lmin">l/min</option>
               <option value="ls">l/s</option>
+              <option value="gpm">gpm</option>
               <option value="kgs">kg/s</option>
               <option value="kgh">kg/h</option>
+              <option value="lbh">lb/h</option>
             </select>
           </div>
         </div>
@@ -247,11 +275,11 @@ input:disabled{opacity:.45}
       <div class="row">
         <div class="field">
           <label for="t1">Temperature 1 (inlet)</label>
-          <div class="inp" data-var="t1"><input id="t1" type="number" step="0.1" value="7" inputmode="decimal"><span>°C</span></div>
+          <div class="inp" data-var="t1"><input id="t1" type="number" step="0.1" value="7" inputmode="decimal"><select class="unit tsel" aria-label="Temperature unit"><option value="C">°C</option><option value="F">°F</option><option value="K">K</option></select></div>
         </div>
         <div class="field">
           <label for="t2">Temperature 2 (outlet)</label>
-          <div class="inp" data-var="t2"><input id="t2" type="number" step="0.1" value="12" inputmode="decimal"><span>°C</span></div>
+          <div class="inp" data-var="t2"><input id="t2" type="number" step="0.1" value="12" inputmode="decimal"><select class="unit tsel" aria-label="Temperature unit"><option value="C">°C</option><option value="F">°F</option><option value="K">K</option></select></div>
         </div>
       </div>
 
@@ -292,13 +320,19 @@ input:disabled{opacity:.45}
     </div>
 
     <div class="mgrid">
-      <div class="mcol"><h3>Ethylene glycol · coefficients c<sub>ij</sub></h3><div class="coef" id="ceg"></div></div>
-      <div class="mcol"><h3>Propylene glycol · coefficients c<sub>ij</sub></h3><div class="coef" id="cpg"></div></div>
+      <div class="mcol"><h3>Ethylene glycol by mass · Melinder (CoolProp MEG)</h3><div class="coef" id="ceg"></div></div>
+      <div class="mcol"><h3>Propylene glycol by mass · Melinder (CoolProp MPG)</h3><div class="coef" id="cpg"></div></div>
+    </div>
+    <div class="mgrid">
+      <div class="mcol"><h3>Ethylene glycol by volume · ASHRAE (CoolProp AEG)</h3><div class="coef" id="cveg"></div></div>
+      <div class="mcol"><h3>Propylene glycol by volume · ASHRAE (CoolProp APG)</h3><div class="coef" id="cvpg"></div></div>
     </div>
 
     <div class="note">
       <p><strong>Heat duty.</strong> Q = ṁ · c<sub>p</sub> · (T₂ − T₁). With a volume flow, ṁ = V̇ · ρ, with ρ and c<sub>p</sub> at the chosen evaluation temperature. When a temperature is calculated, the properties depend on the result, so the calculation is repeated until the value stops changing (fixed-point iteration). 1 kW = 859.845 kcal/h.</p>
       <p><strong>Note.</strong> At concentrations close to 0 % the Melinder polynomial deviates by about 0.1 % from pure water (for example 997.3 versus 998.2 kg/m³ at 20 °C). For water without glycol, choose “Water”.</p>
+      <p><strong>Concentration by volume.</strong> As in CoolProp, the volume concentration is not converted to mass: a second data set written directly in the volume fraction is used, the ASHRAE Handbook – Fundamentals (2001) data for ethylene and propylene glycol as fitted by SecCool (Skovrup, 2013), CoolProp fluids AEG and APG. Same polynomial form as above, with x the glycol volume fraction (0.1–0.6), T<sub>b</sub> = 305.65 K and x<sub>b</sub> = 0.35; the freezing point is T<sub>f</sub> = exp(Σ<sub>j</sub> c<sub>j</sub> (x − x<sub>b</sub>)<sup>j</sup>). Valid from 10 to 60 % by volume and from −35 °C (or the freezing point) to 100 °C. The equivalent concentration shown under the freezing point comes from the ASHRAE volume–mass table included in CoolProp (for example 30 % by mass ≈ 27.7 % by volume of ethylene glycol, 29.4 % of propylene glycol). The two data sets do not coincide exactly: for the same mixture the ASHRAE density is 0.2–0.9 % higher than Melinder’s, and for ethylene glycol c<sub>p</sub> differs by up to about ±1.8 % (propylene glycol: within 0.2 %).</p>
+      <p><strong>Units.</strong> All calculations are performed in SI units. With <em>US</em> selected at the top of the page, inputs and results are converted: t[°F] = 1.8·t[°C] + 32, 1 lb/ft³ = 16.0185 kg/m³, 1 Btu/lb·°F = 4.1868 kJ/kg·K, 1 US gpm = 3.78541 l/min, 1 lb = 0.453592 kg, 1 ton of refrigeration = 12 000 Btu/h = 3.51685 kW, 1 kW = 3412.14 Btu/h, 1 MBH = 1000 Btu/h. Temperatures can also be shown in kelvin (T[K] = t[°C] + 273.15) with the menu next to each temperature field. The flow and duty menus list all units in either system.</p>
     </div>
   </section>
   </div>
@@ -311,11 +345,11 @@ input:disabled{opacity:.45}
         <div class="row">
           <div class="field">
             <label for="tdb">Dry‑bulb temperature</label>
-            <div class="inp"><input id="tdb" type="number" step="0.1" value="26" inputmode="decimal"><span>°C</span></div>
+            <div class="inp"><input id="tdb" type="number" step="0.1" value="26" inputmode="decimal"><select class="unit tsel" aria-label="Temperature unit"><option value="C">°C</option><option value="F">°F</option><option value="K">K</option></select></div>
           </div>
           <div class="field">
             <label for="pres">Atmospheric pressure</label>
-            <div class="inp"><input id="pres" type="number" step="0.001" min="50" max="120" value="101.325" inputmode="decimal"><span>kPa</span></div>
+            <div class="inp"><input id="pres" type="number" step="0.001" min="50" max="120" value="101.325" inputmode="decimal"><span data-u="pa">kPa</span></div>
           </div>
         </div>
         <div class="field">
@@ -329,11 +363,11 @@ input:disabled{opacity:.45}
         <div class="row">
           <div class="field">
             <label for="aval" id="aval-lbl">Relative humidity</label>
-            <div class="inp"><input id="aval" type="number" step="0.1" value="50" inputmode="decimal"><span id="aval-u">%</span></div>
+            <div class="inp"><input id="aval" type="number" step="0.1" value="50" inputmode="decimal"><span id="aval-u">%</span><select class="unit tsel" id="aval-tu" hidden aria-label="Temperature unit"><option value="C">°C</option><option value="F">°F</option><option value="K">K</option></select></div>
           </div>
           <div class="field">
             <label for="alt">Altitude</label>
-            <div class="inp"><input id="alt" type="number" step="1" value="0" inputmode="decimal"><span>m a.s.l.</span></div>
+            <div class="inp"><input id="alt" type="number" step="1" value="0" inputmode="decimal"><span data-u="z">m a.s.l.</span></div>
           </div>
         </div>
         <div class="msg" id="msg3" hidden></div>
@@ -351,7 +385,7 @@ input:disabled{opacity:.45}
           <dt>Saturation pressure p<sub>vs</sub>(t)</dt><dd id="a-pws">—</dd>
           <dt>Moist air specific heat c<sub>p</sub></dt><dd id="a-cp">—</dd>
         </dl>
-        <p class="sub" style="margin:0">Enthalpy, humidity ratio and volume are per kg of dry air.</p>
+        <p class="sub" style="margin:0" id="a-note">Enthalpy, humidity ratio and volume are per kg of dry air.</p>
       </div>
       <div class="aircol">
         <div class="chart" aria-label="Psychrometric chart with the state point">
@@ -381,6 +415,7 @@ input:disabled{opacity:.45}
         <p>For t* &lt; 0 °C:</p>
         <div class="eq">x = [(2830 − 0.24·t*)·x<sub>s</sub>* − 1.006·(t − t*)] / (2830 + 1.86·t − 2.1·t*)</div>
         <p>The wet bulb is found by solving the equation by bisection. The dew point is the temperature at which p<sub>vs</sub> = p<sub>v</sub>; below 0 °C it is the frost point. Pressure from altitude Z: p = 101.325·(1 − 2.25577·10⁻⁵·Z)<sup>5.2559</sup> kPa. Specific heat: c<sub>p</sub> = 1.006 + 1.86·x kJ/(kg d.a.·K).</p>
+        <p><strong>US units.</strong> Humidity ratio in grains per lb of dry air (7000 gr = 1 lb, so 1 g/kg = 7 gr/lb), pressures in psia, altitude in ft. Enthalpy is referred to dry air at 0 °F, as in the ASHRAE IP psychrometric chart: h[Btu/lb] = h[kJ/kg]/2.326 + 7.689, equivalent to h = 0.240·t + x·(1061 + 0.444·t) with t in °F.</p>
       </div>
     </div>
 
@@ -405,6 +440,7 @@ input:disabled{opacity:.45}
                 <option value="kpa">kPa absolute</option>
                 <option value="mpa">MPa absolute</option>
                 <option value="psig">psi gauge</option>
+                <option value="psia">psi absolute</option>
               </select>
             </div>
           </div>
@@ -435,7 +471,7 @@ input:disabled{opacity:.45}
           </div>
           <div class="field" id="r-tf">
             <label for="r-t">Temperature</label>
-            <div class="inp"><input id="r-t" type="number" step="0.1" value="0" inputmode="decimal"><span>°C</span></div>
+            <div class="inp"><input id="r-t" type="number" step="0.1" value="0" inputmode="decimal"><select class="unit tsel" aria-label="Temperature unit"><option value="C">°C</option><option value="F">°F</option><option value="K">K</option></select></div>
           </div>
           <div class="field" id="r-qf">
             <label for="r-q">Vapour quality x</label>
@@ -466,7 +502,7 @@ input:disabled{opacity:.45}
         <div class="chart" aria-label="Pressure-enthalpy chart with the state point">
           <svg id="ph" viewBox="0 0 560 440" role="img"></svg>
         </div>
-        <p class="sub" style="margin:0">Logarithmic vertical axis. Isotherms every 20 °C, dashed lines of constant quality (10 %–90 %).</p>
+        <p class="sub" style="margin:0" id="r-chnote">Logarithmic vertical axis. Isotherms every 20 °C, dashed lines of constant quality (10 %–90 %).</p>
       </div>
     </div>
   </section>
@@ -486,7 +522,8 @@ input:disabled{opacity:.45}
         <p><strong>Reference state.</strong> For all fluids h = 200 kJ/kg and s = 1 kJ/kg·K for saturated liquid (bubble point) at 0 °C, the IIR convention. Some manufacturer tables for R717 and R744 use a different reference: enthalpy differences are unaffected.</p>
         <p><strong>Zeotropic blends.</strong> At the same pressure, saturated liquid is at the bubble temperature and saturated vapour at the dew temperature. Glide is T<sub>dew</sub> − T<sub>bub</sub>. Superheat is measured from the dew point, subcooling from the bubble point. For a given quality, h, s and v are the weighted mean of the saturated phases. The temperature is estimated by linear interpolation between bubble and dew (≈).</p>
         <p><strong>Accuracy versus CoolProp</strong> (820 test points below 0.9·p<sub>c</sub>): T<sub>sat</sub> &lt; 0.001 K, p<sub>sat</sub> &lt; 0.001 %, h &lt; 0.06 kJ/kg, ρ &lt; 0.03 %, c<sub>p</sub> &lt; 0.4 %. Between 0.9 and 0.99·p<sub>c</sub>: h &lt; 0.25 kJ/kg, c<sub>p</sub> up to a few % near the critical point. R744 supercritical: h &lt; 0.6 kJ/kg, c<sub>p</sub> up to 3 % along the pseudocritical line.</p>
-        <p><strong>Gauge pressure</strong> is relative to 1.01325 bar. 1 psi = 0.0689476 bar.</p>
+        <p><strong>Gauge pressure</strong> is relative to 1.01325 bar (14.696 psia). 1 psi = 0.0689476 bar.</p>
+        <p><strong>US units.</strong> 1 Btu/lb = 2.326 kJ/kg, 1 Btu/lb·°F = 4.1868 kJ/kg·K, 1 lb/ft³ = 16.0185 kg/m³. Enthalpy and entropy keep the IIR reference (saturated liquid at 32 °F: h = 85.98 Btu/lb, s = 0.2388 Btu/lb·°F); many US tables use the ASHRAE reference (h = 0, s = 0 for saturated liquid at −40 °F), so absolute values differ but enthalpy differences are the same.</p>
       </div>
     </div>
     <div class="coef" id="r-flt"></div>
@@ -502,6 +539,64 @@ const $ = id => document.getElementById(id);
 const fmt = (v, d) => Number.isFinite(v) ? v.toLocaleString('en-GB', {minimumFractionDigits: d, maximumFractionDigits: d}) : '—';
 let fluid = 'w';
 
+/* ---------- Unit systems: SI / US customary (every calculation stays in SI) ---------- */
+let US = false, TU = 'C';           // unit system; temperature unit C / F / K
+const HOFF = 1.006 * 32 / 1.8 / 2.326;   // moist-air enthalpy: datum 0 °C (SI) → 0 °F dry air (ASHRAE IP)
+const LBFT3 = 16.018463, PSI_KPA = 6.894757, PSI_BAR = 0.0689476, GAL_L = 3.785411784, LB_KG = 0.45359237;
+const QTY = {   // [SI label, US label, SI → US, US → SI]
+  rho: ['kg/m³', 'lb/ft³', v => v / LBFT3, v => v * LBFT3],
+  cp:  ['kJ/kg·K', 'Btu/lb·°F', v => v / 4.1868, v => v * 4.1868],
+  h:   ['kJ/kg', 'Btu/lb', v => v / 2.326, v => v * 2.326],
+  ha:  ['kJ/kg d.a.', 'Btu/lb d.a.', v => v / 2.326 + HOFF, v => (v - HOFF) * 2.326],
+  v:   ['m³/kg', 'ft³/lb', v => v * LBFT3, v => v / LBFT3],
+  va:  ['m³/kg d.a.', 'ft³/lb d.a.', v => v * LBFT3, v => v / LBFT3],
+  W:   ['g/kg d.a.', 'gr/lb d.a.', v => v * 7, v => v / 7],            // humidity ratio, SI value in g/kg
+  pa:  ['kPa', 'psia', v => v / PSI_KPA, v => v * PSI_KPA],
+  pv:  ['Pa', 'psia', v => v / (PSI_KPA * 1000), v => v * PSI_KPA * 1000],
+  z:   ['m a.s.l.', 'ft a.s.l.', v => v / 0.3048, v => v * 0.3048]
+};
+// temperatures follow TU, the other quantities follow the SI / US switch
+const TQ = {
+  T:  { C: ['°C', v => v, v => v], F: ['°F', v => v * 1.8 + 32, v => (v - 32) / 1.8], K: ['K', v => v + 273.15, v => v - 273.15] },
+  dT: { C: ['K', v => v, v => v],  F: ['°F', v => v * 1.8, v => v / 1.8],             K: ['K', v => v, v => v] }
+};
+const uL = k => TQ[k] ? TQ[k][TU][0] : QTY[k][US ? 1 : 0];
+const toU = (k, v) => TQ[k] ? TQ[k][TU][1](v) : US ? QTY[k][2](v) : v;      // SI → displayed unit
+const toSI = (k, v) => TQ[k] ? TQ[k][TU][2](v) : US ? QTY[k][3](v) : v;     // displayed unit → SI
+const fq = (k, v, dSI, dUS = dSI) => fmt(toU(k, v), US ? dUS : dSI) + ' ' + uL(k);
+const fT = (t, d = 1) => fq('T', t, d);
+const rnd = (v, d) => Number.isFinite(v) ? +v.toFixed(d) : '';
+// write a converted value into an input; switching back without editing restores the exact original entry
+const MEMO = {};
+let TAG_OLD = '', TAG_NEW = '';     // unit state before / after the current switch
+function conv(el, v, oldTag = TAG_OLD, newTag = TAG_NEW){
+  const m = MEMO[el.id], cur = String(el.value);
+  if (m && m.written === cur && m.tag === newTag){ el.value = m.orig; delete MEMO[el.id]; return; }
+  el.value = v;
+  MEMO[el.id] = { written: String(el.value), orig: cur, tag: oldTag };
+}
+// each section registers { get: () => state in SI, set: state => rewrite inputs in the new system and redraw }
+const UNIT_HOOKS = [];
+function relabel(){
+  document.querySelectorAll('[data-u]').forEach(el => el.textContent = uL(el.dataset.u));
+  document.querySelectorAll('.tsel').forEach(el => el.value = TU);
+  document.querySelectorAll('#usys button').forEach(b => b.setAttribute('aria-pressed', b.dataset.sys === (US ? 'us' : 'si')));
+}
+const unitTag = () => (US ? 'us' : 'si') + TU;
+// change unit system and/or temperature unit; the inputs are converted so the state does not change
+function applyUnits(us, tu){
+  const st = UNIT_HOOKS.map(h => h.get()), sysChanged = us !== US;
+  TAG_OLD = unitTag(); US = us; TU = tu; TAG_NEW = unitTag();
+  relabel();
+  UNIT_HOOKS.forEach((h, i) => h.set(st[i], sysChanged));
+  try { localStorage.setItem('fp-units', US ? 'us' : 'si'); localStorage.setItem('fp-tu', TU); } catch (_) {}
+}
+// SI → °C, US → °F (kelvin stays available from the temperature menus)
+function setUnits(sys){ applyUnits(sys === 'us', sys === 'us' ? 'F' : 'C'); }
+$('usys').addEventListener('click', e => { const b = e.target.closest('button'); if (b && (b.dataset.sys === 'us') !== US) setUnits(b.dataset.sys); });
+// all temperature menus are linked: choosing a unit in one converts every temperature on the page
+document.querySelectorAll('.tsel').forEach(el => el.addEventListener('change', () => applyUnits(US, el.value)));
+
 // Melinder 2D polynomial: f = Σi Σj c[i][j] · (T − Tb)^i · (x − xb)^j, T in K, x mass fraction
 function melinder(c, T, x, Tb, xb){
   const dT = T - Tb, dx = x - xb; let s = 0, pT = 1;
@@ -515,36 +610,69 @@ function waterRho(t){
 // Water: cp [kJ/kg·K] = Σ a_k (t/100)^k
 function waterCp(t){ const u = t/100; return C.w_cp.reduce((s, a, k) => s + a * u**k, 0); }
 
-// Freezing point [°C] of the mixture at concentration x [%]
+/* Two data sets, as in CoolProp:
+   by mass   → Melinder (2010), CoolProp MEG / MPG, 0–60 % by mass
+   by volume → ASHRAE Handbook (2001) data fitted by SecCool (Skovrup 2013), CoolProp AEG / APG, 10–60 % by volume, −35…100 °C
+   Same polynomial form f = Σi Σj c_ij (T − Tb)^i (x − xb)^j; ASHRAE freezing point = exp(Σj c_j (x − xb)^j) [K] */
+const CV = {"eg":{"Tb":305.65,"xb":0.35,"rho":[[1047.337,140.4485,-48.70559,71.41693,52.4585,-693.3962],[-0.4505054,-0.3001582,-0.03952614,0.02496264,-0.06817576,0.0],[-0.002432696,-2.084384e-05,0.0003108353,-0.0008979712,0.0,0.0],[-3.72545e-09,1.044784e-06,-4.391164e-06,0.0,0.0,0.0]],"cp":[[3596.551,-1707.073,-444.7538,-552.7923,-715.9059,7905.301],[3.096886,5.184379,-0.7061384,0.7949891,-0.6689394,0.0],[-3.388642e-05,0.0003639717,0.0009169943,-0.005359818,0.0,0.0],[3.171299e-07,-2.457345e-06,1.419543e-05,0.0,0.0,0.0]],"tf":[5.534468,-0.3574293,-0.6535113,-0.9039166,1.048048,4.622116]},"pg":{"Tb":305.65,"xb":0.35,"rho":[[1026.177,72.53677,-65.32547,34.66575,-15.82785,-213.9879],[-0.5350059,-0.5056296,0.1751278,-0.092333,0.02877433,0.0],[-0.002566157,-0.0001703579,0.001165892,-0.000207517,0.0,0.0],[-5.177362e-09,9.673215e-09,3.368862e-07,0.0,0.0,0.0]],"cp":[[3815.392,-1391.877,-1121.4,-419.3939,-243.53,4054.145],[3.025751,5.558605,-0.1073388,0.5290725,-2.262081,0.0],[4.165345e-05,-9.03207e-05,-0.003392169,0.01079472,0.0,0.0],[-4.309483e-07,-1.33518e-06,3.538903e-05,0.0,0.0,0.0]],"tf":[5.546103,-0.326277,-0.6666873,-0.8800598,-1.071417,-1.875782]}};
+// ASHRAE volume ↔ mass table (independent of temperature), used only to show the equivalent concentration
+const VM = {"eg":[[0.0,4.4,8.9,13.6,18.1,19.2,20.1,21.0,22.0,22.9,23.9,24.8,25.8,26.7,27.7,28.7,29.6,30.6,31.6,32.6,33.5,34.5,35.5,36.5,37.5,38.5,39.5,40.5,41.5,42.5,43.5,44.5,45.5,46.6,47.6,48.6,49.6,50.6,51.6,52.7,53.7,54.7,55.7,56.8,57.8],[0.0,5.0,10.0,15.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,57.0,58.0,59.0,60.0]],"pg":[[0.0,4.8,9.6,14.5,19.4,20.4,21.4,22.4,23.4,24.4,25.3,26.4,27.4,28.4,29.4,30.4,31.4,32.4,33.5,34.4,35.5,36.5,37.5,38.5,39.6,40.6,41.6,42.6,43.7,44.7,45.7,46.8,47.8,48.9,49.9,50.9,51.9,53.0,54.0,55.0,56.0,57.0,58.0,59.0,60.0],[0.0,5.0,10.0,15.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,57.0,58.0,59.0,60.0]]};
+function interp(xs, ys, x){
+  let i = 1; while (i < xs.length - 1 && x > xs[i]) i++;
+  return ys[i-1] + (ys[i] - ys[i-1]) * (x - xs[i-1]) / (xs[i] - xs[i-1]);   // linear, extrapolated at the ends
+}
+const v2m = (f, xv) => interp(VM[f] ? VM[f][0] : VM.eg[0], VM[f] ? VM[f][1] : VM.eg[1], xv);   // % vol → % mass
+const m2v = (f, xm) => interp(VM[f] ? VM[f][1] : VM.eg[1], VM[f] ? VM[f][0] : VM.eg[0], xm);   // % mass → % vol
+let basis = 'mass';
+const CMIN = () => basis === 'vol' ? 10 : 0;        // concentration limits of the active data set [%]
+const TLOW = () => basis === 'vol' ? -35 : -100;    // lowest temperature of the data set [°C]
+
+// Freezing point [°C] of the mixture at concentration x [%] in the active basis
 function freeze(f, x){
   if (f === 'w') return 0;
+  if (basis === 'vol'){ const g = CV[f], dx = x/100 - g.xb; return Math.exp(g.tf.reduce((s, a, j) => s + a * dx**j, 0)) - 273.15; }
   const g = C[f], dx = x/100 - g.xb;
   return g.tf.reduce((s, a, j) => s + a * dx**j, 0) - 273.15;
 }
-// Properties at concentration x [%] and temperature t [°C]; null if out of range
+// Properties at concentration x [%] (active basis) and temperature t [°C]; null if out of range
 function prop(f, x, t){
   if (!Number.isFinite(t) || t > 100) return null;
   if (f === 'w'){
     if (t < 0) return null;
     return { rho: waterRho(t), cp: waterCp(t) };
   }
-  if (x < 0 || x > 60 || t < freeze(f, x) - 1e-9) return null;
-  const g = C[f], T = t + 273.15, xf = x/100;
+  if (x < CMIN() || x > 60 || t < TLOW() || t < freeze(f, x) - 1e-9) return null;
+  const g = basis === 'vol' ? CV[f] : C[f], T = t + 273.15, xf = x/100;
   return { rho: melinder(g.rho, T, xf, g.Tb, g.xb), cp: melinder(g.cp, T, xf, g.Tb, g.xb) / 1000 };
 }
-function pct(){ return fluid === 'w' ? 0 : Math.min(60, Math.max(0, parseFloat($('pct').value) || 0)); }
+// glycol concentration [%] in the active basis
+function pct(){
+  if (fluid === 'w') return 0;
+  return Math.min(60, Math.max(0, parseFloat($('pct').value) || 0));
+}
+function pctRange(){
+  for (const id of ['pct', 'pctr']){ $(id).min = CMIN(); $(id).max = 60; }
+}
 function rangeMsg(f, x){
-  return f === 'w' ? 'valid range: 0 to 100 °C' : `valid range: ${fmt(Math.ceil(freeze(f, x)*10)/10,1)} to 100 °C`;
+  if (f === 'w') return `valid range: ${fmt(toU('T', 0), 0)} to ${fq('T', 100, 0)}`;
+  if (x < CMIN()) return `the ASHRAE data by volume cover 10 to 60 % by volume`;
+  return `valid range: ${fmt(toU('T', Math.ceil(Math.max(freeze(f, x), TLOW())*10)/10), 1)} to ${fq('T', 100, 0)}`;
 }
 
 function update(){
-  const x = pct(), t = parseFloat($('temp').value);
-  $('pct').disabled = $('pctr').disabled = fluid === 'w';
+  const x = pct(), t = toSI('T', parseFloat($('temp').value));
+  $('pct').disabled = $('pctr').disabled = $('pctu').disabled = fluid === 'w';
   const p = Number.isFinite(t) ? prop(fluid, x, t) : null;
   const tf = freeze(fluid, x);
-  $('o-tf').innerHTML = fmt(tf, 1) + '<span class="u">°C</span>';
-  $('o-tf2').textContent = fluid === 'w' ? 'pure water' : `${fmt(x,1)} % by mass`;
-  if (p){
+  $('o-tf').innerHTML = fmt(toU('T', tf), 1) + `<span class="u">${uL('T')}</span>`;
+  $('o-tf2').textContent = fluid === 'w' ? 'pure water' : basis === 'vol' ? `ASHRAE · ≈ ${fmt(v2m(fluid, x),1)} % by mass` : `Melinder · ≈ ${fmt(m2v(fluid, x),1)} % by volume`;
+  if (p && US){
+    $('o-rho').innerHTML = fmt(toU('rho', p.rho), 3) + '<span class="u">lb/ft³</span>';
+    $('o-rho2').textContent = fmt(p.rho, 1) + ' kg/m³';
+    $('o-cp').innerHTML = fmt(toU('cp', p.cp), 4) + '<span class="u">Btu/lb·°F</span>';
+    $('o-cp2').textContent = fmt(p.cp, 3) + ' kJ/kg·K';
+    $('msg1').hidden = true;
+  } else if (p){
     $('o-rho').innerHTML = fmt(p.rho, 1) + '<span class="u">kg/m³</span>';
     $('o-rho2').textContent = fmt(p.rho/1000, 4) + ' kg/l';
     $('o-cp').innerHTML = fmt(p.cp, 3) + '<span class="u">kJ/kg·K</span>';
@@ -553,7 +681,8 @@ function update(){
   } else {
     $('o-rho').textContent = $('o-cp').textContent = '—';
     $('o-rho2').innerHTML = $('o-cp2').innerHTML = '&nbsp;';
-    $('msg1').textContent = (Number.isFinite(t) && Number.isFinite(tf) && t < tf ? 'Temperature below the freezing point: ' : 'Temperature outside the valid range: ') + rangeMsg(fluid, x) + '.';
+    $('msg1').textContent = fluid !== 'w' && x < CMIN() ? 'Concentration too low: ' + rangeMsg(fluid, x) + '.'
+      : (Number.isFinite(t) && Number.isFinite(tf) && t < tf ? 'Temperature below the freezing point: ' : 'Temperature outside the valid range: ') + rangeMsg(fluid, x) + '.';
     $('msg1').hidden = false;
   }
   drawChart(x, t);
@@ -561,14 +690,16 @@ function update(){
 }
 
 let solveFor = 'q';
-const Q_UNITS = { kw: [1, 'kW'], w: [1e-3, 'W'], kcalh: [1/859.845, 'kcal/h'] };      // factor → kW
-const FLOW_UNITS = { m3h: 'm³/h', lmin: 'l/min', ls: 'l/s', kgs: 'kg/s', kgh: 'kg/h' };
+const Q_UNITS = { kw: [1, 'kW'], w: [1e-3, 'W'], kcalh: [1/859.845, 'kcal/h'], ton: [3.5168528, 'ton'], btuh: [1/3412.1416, 'Btu/h'], mbh: [1/3.4121416, 'MBH'] };  // factor → kW
+const FLOW_UNITS = { m3h: 'm³/h', lmin: 'l/min', ls: 'l/s', kgs: 'kg/s', kgh: 'kg/h', gpm: 'gpm', lbh: 'lb/h' };
+const VOL_F = { m3h: 1, lmin: 0.06, ls: 3.6, gpm: GAL_L * 0.06 };       // factor → m³/h
+const MASS_F = { kgs: 3600, kgh: 1, lbh: LB_KG };                        // factor → kg/h
 // flow in the chosen unit → kg/s, and back
 function toMass(V, unit, rho){
-  return { m3h: V/3600*rho, lmin: V/60000*rho, ls: V/1000*rho, kgs: V, kgh: V/3600 }[unit];
+  return { m3h: V/3600*rho, lmin: V/60000*rho, ls: V/1000*rho, kgs: V, kgh: V/3600, gpm: V*GAL_L/60000*rho, lbh: V*LB_KG/3600 }[unit];
 }
 function fromMass(m, unit, rho){
-  return { m3h: m/rho*3600, lmin: m/rho*60000, ls: m/rho*1000, kgs: m, kgh: m*3600 }[unit];
+  return { m3h: m/rho*3600, lmin: m/rho*60000, ls: m/rho*1000, kgs: m, kgh: m*3600, gpm: m/rho*60000/GAL_L, lbh: m*3600/LB_KG }[unit];
 }
 const OUT_IDS = { q: 'qin', flow: 'flow', t1: 't1', t2: 't2' };
 function setSolve(s){
@@ -591,7 +722,7 @@ function setSolve(s){
 
 function power(x){
   const unit = $('unit').value, qu = $('qunit').value, ref = $('tref').value;
-  let t1 = parseFloat($('t1').value), t2 = parseFloat($('t2').value), V = parseFloat($('flow').value);
+  let t1 = toSI('T', parseFloat($('t1').value)), t2 = toSI('T', parseFloat($('t2').value)), V = parseFloat($('flow').value);
   let Qin = parseFloat($('qin').value) * Q_UNITS[qu][0]; // kW, absolute value
   const clear = m => {
     ['k-tr','k-rho','k-cp','k-m','k-v','k-dt','k-q2'].forEach(id => $(id).textContent = '—');
@@ -614,7 +745,7 @@ function power(x){
   for (; it < 50; it++){
     const tr = trOf();
     p = prop(fluid, x, tr);
-    if (!p) return clear(`The evaluation temperature (${fmt(tr,1)} °C) is outside the valid range: ${rangeMsg(fluid, x)}.`);
+    if (!p) return clear(`The evaluation temperature (${fT(tr, 1)}) is outside the valid range: ${rangeMsg(fluid, x)}.`);
     if (solveFor === 'q'){ m = toMass(V, unit, p.rho); Q = m * p.cp * (t2 - t1); break; }
     if (solveFor === 'flow'){
       if (t1 === t2) return clear('With T₁ = T₂ the flow rate cannot be determined: a temperature difference is needed.');
@@ -631,14 +762,26 @@ function power(x){
 
   const v = m / p.rho, dT = t2 - t1, tr = trOf();
   // write the result into the calculated field
-  const result = { q: Math.abs(Q) / Q_UNITS[qu][0], flow: V, t1, t2 }[solveFor];
+  const result = { q: Math.abs(Q) / Q_UNITS[qu][0], flow: V, t1: toU('T', t1), t2: toU('T', t2) }[solveFor];
   $(OUT_IDS[solveFor]).value = +result.toFixed(solveFor === 't1' || solveFor === 't2' ? 2 : 4);
-  $('k-tr').textContent = fmt(tr, 2) + ' °C';
-  $('k-rho').textContent = fmt(p.rho, 1) + ' kg/m³';
-  $('k-cp').textContent = fmt(p.cp, 3) + ' kJ/kg·K';
+  $('k-tr').textContent = fT(tr, 2);
+  $('k-rho').textContent = fq('rho', p.rho, 1, 3);
+  $('k-cp').textContent = fq('cp', p.cp, 3, 4);
+  $('k-dt').textContent = (dT > 0 ? '+' : '') + fq('dT', dT, 2);
+  if (US){
+    const mlb = m * 3600 / LB_KG, cpu = toU('cp', p.cp), dTu = toU('dT', dT), Qb = Q * 3412.1416, T1 = toU('T', t1), T2 = toU('T', t2);
+    $('k-m').textContent = fmt(mlb, 1) + ' lb/h  ·  ' + fmt(m / LB_KG, 4) + ' lb/s';
+    $('k-v').textContent = fmt(v*60000/GAL_L, 2) + ' gpm  ·  ' + fmt(v*3600, 3) + ' m³/h';
+    $('k-q2').textContent = fmt(Q/3.5168528, 3) + ' ton  ·  ' + fmt(Qb, 0) + ' Btu/h  ·  ' + fmt(Q, 3) + ' kW';
+    $('o-form').textContent = {
+      q: `Q = ${fmt(mlb,1)} lb/h × ${fmt(cpu,4)} Btu/lb·°F × ${fmt(dTu,2)} °F = ${fmt(Qb,0)} Btu/h`,
+      flow: `ṁ = |Q| / (cp · |ΔT|) = ${fmt(Math.abs(Qb),0)} / (${fmt(cpu,4)} × ${fmt(Math.abs(dTu),2)}) = ${fmt(mlb,1)} lb/h`,
+      t1: `T₁ = T₂ − Q / (ṁ · cp) = ${fmt(T2,2)} − ${fmt(Qb,0)} / (${fmt(mlb,1)} × ${fmt(cpu,4)}) = ${fmt(T1,2)} °F`,
+      t2: `T₂ = T₁ + Q / (ṁ · cp) = ${fmt(T1,2)} + ${fmt(Qb,0)} / (${fmt(mlb,1)} × ${fmt(cpu,4)}) = ${fmt(T2,2)} °F`
+    }[solveFor];
+  } else {
   $('k-m').textContent = fmt(m, 4) + ' kg/s  ·  ' + fmt(m*3600, 1) + ' kg/h';
   $('k-v').textContent = fmt(v*3600, 3) + ' m³/h  ·  ' + fmt(v*60000, 2) + ' l/min';
-  $('k-dt').textContent = (dT > 0 ? '+' : '') + fmt(dT, 2) + ' K';
   $('k-q2').textContent = fmt(Q, 3) + ' kW  ·  ' + fmt(Q*1000, 0) + ' W  ·  ' + fmt(Q*859.845, 0) + ' kcal/h';
   $('o-form').textContent = {
     q: `Q = ${fmt(m,4)} kg/s × ${fmt(p.cp,3)} kJ/kg·K × ${fmt(dT,2)} K = ${fmt(Q,3)} kW`,
@@ -646,38 +789,41 @@ function power(x){
     t1: `T₁ = T₂ − Q / (ṁ · cp) = ${fmt(t2,2)} − ${fmt(Q,3)} / (${fmt(m,4)} × ${fmt(p.cp,3)}) = ${fmt(t1,2)} °C`,
     t2: `T₂ = T₁ + Q / (ṁ · cp) = ${fmt(t1,2)} + ${fmt(Q,3)} / (${fmt(m,4)} × ${fmt(p.cp,3)}) = ${fmt(t2,2)} °C`
   }[solveFor];
+  }
   const tf = freeze(fluid, x), tmin = Math.min(t1, t2), tmax = Math.max(t1, t2);
   let warn = '';
-  if (Number.isFinite(tf) && tmin < tf) warn = `Warning: ${fmt(tmin,1)} °C is below the freezing point of the mixture (${fmt(tf,1)} °C).`;
-  else if (tmax > 100) warn = `Warning: ${fmt(tmax,1)} °C exceeds 100 °C, the validity limit of the correlations.`;
+  if (Number.isFinite(tf) && tmin < tf) warn = `Warning: ${fT(tmin, 1)} is below the freezing point of the mixture (${fT(tf, 1)}).`;
+  else if (tmax > 100) warn = `Warning: ${fT(tmax, 1)} exceeds ${fT(100, 0)}, the validity limit of the correlations.`;
   $('msg2').textContent = warn; $('msg2').hidden = !warn;
 }
 
 function drawChart(x, tcur){
   const svg = $('chart'), W = 520, H = 236, pad = {l:46, r:50, t:22, b:30};
-  const tf = freeze(fluid, x), t0 = Math.max(-50, tf), t1 = 100;
+  const tf = freeze(fluid, x), t0 = Math.max(-50, fluid === 'w' ? 0 : TLOW(), tf), t1 = 100;
   const pts = [];
-  for (let k = 0; k <= 150; k++){ const t = t0 + (t1 - t0) * k / 150; const p = prop(fluid, x, t); if (p) pts.push([t, p.rho, p.cp]); }
+  for (let k = 0; k <= 150; k++){ const t = t0 + (t1 - t0) * k / 150; const p = prop(fluid, x, t); if (p) pts.push([t, toU('rho', p.rho), toU('cp', p.cp)]); }
   if (pts.length < 2){ svg.innerHTML = ''; return; }
   const rng = a => { let lo = Math.min(...a), hi = Math.max(...a); const m = (hi-lo)*0.08 || 1; return [lo-m, hi+m]; };
   const [rlo, rhi] = rng(pts.map(p => p[1])), [clo, chi] = rng(pts.map(p => p[2]));
-  const X = t => pad.l + (t - (-50)) / 150 * (W - pad.l - pad.r);
+  const DL = toU('T', -50), DH = toU('T', 100), DS = TU === 'F' ? 50 : 25;   // axis in the displayed unit
+  const X = t => pad.l + (toU('T', t) - DL) / (DH - DL) * (W - pad.l - pad.r);
   const Yr = v => pad.t + (rhi - v) / (rhi - rlo) * (H - pad.t - pad.b);
   const Yc = v => pad.t + (chi - v) / (chi - clo) * (H - pad.t - pad.b);
   const col = fluid === 'w' ? 'var(--water)' : fluid === 'eg' ? 'var(--eg)' : 'var(--pg)';
   let s = '';
-  for (let t = -50; t <= 100; t += 25){
+  for (let td = Math.ceil(DL / DS) * DS; td <= DH; td += DS){
+    const t = toSI('T', td);
     s += `<line x1="${X(t)}" x2="${X(t)}" y1="${pad.t}" y2="${H-pad.b}" stroke="var(--line)" stroke-width="1"/>`;
-    s += `<text x="${X(t)}" y="${H-pad.b+15}" text-anchor="middle">${t}</text>`;
+    s += `<text x="${X(t)}" y="${H-pad.b+15}" text-anchor="middle">${fmt(td, 0)}</text>`;
   }
   for (let k = 0; k <= 4; k++){
     const y = pad.t + k/4*(H-pad.t-pad.b);
     const rv = rhi - k/4*(rhi-rlo), cv = chi - k/4*(chi-clo);
-    s += `<text x="${pad.l-6}" y="${y+3}" text-anchor="end">${fmt(rv,0)}</text>`;
-    s += `<text x="${W-pad.r+6}" y="${y+3}">${fmt(cv,2)}</text>`;
+    s += `<text x="${pad.l-6}" y="${y+3}" text-anchor="end">${fmt(rv, US ? 1 : 0)}</text>`;
+    s += `<text x="${W-pad.r+6}" y="${y+3}">${fmt(cv, US ? 3 : 2)}</text>`;
   }
-  s += `<text x="2" y="9">ρ [kg/m³]</text><text x="${W-2}" y="9" text-anchor="end">cp [kJ/kg·K]</text>`;
-  s += `<text x="${(W+pad.l-pad.r)/2}" y="${H-2}" text-anchor="middle">temperature °C</text>`;
+  s += `<text x="2" y="9">ρ [${uL('rho')}]</text><text x="${W-2}" y="9" text-anchor="end">cp [${uL('cp')}]</text>`;
+  s += `<text x="${(W+pad.l-pad.r)/2}" y="${H-2}" text-anchor="middle">temperature ${uL('T')}</text>`;
   if (t0 > -50) s += `<rect x="${X(-50)}" y="${pad.t}" width="${Math.max(0, X(t0)-X(-50))}" height="${H-pad.t-pad.b}" fill="var(--line)" opacity=".5"/>`;
   const path = (Y, idx) => pts.map((p,i) => (i ? 'L' : 'M') + X(p[0]).toFixed(1) + ' ' + Y(p[idx]).toFixed(1)).join(' ');
   s += `<path d="${path(Yr,1)}" fill="none" stroke="${col}" stroke-width="2.2"/>`;
@@ -685,8 +831,8 @@ function drawChart(x, tcur){
   const pc = Number.isFinite(tcur) ? prop(fluid, x, tcur) : null;
   if (pc){
     s += `<line x1="${X(tcur)}" x2="${X(tcur)}" y1="${pad.t}" y2="${H-pad.b}" stroke="var(--accent)" stroke-width="1" stroke-dasharray="2 3"/>`;
-    s += `<circle cx="${X(tcur)}" cy="${Yr(pc.rho)}" r="4" fill="${col}" stroke="var(--panel)" stroke-width="1.5"/>`;
-    s += `<circle cx="${X(tcur)}" cy="${Yc(pc.cp)}" r="4" fill="var(--ink)" stroke="var(--panel)" stroke-width="1.5"/>`;
+    s += `<circle cx="${X(tcur)}" cy="${Yr(toU('rho', pc.rho))}" r="4" fill="${col}" stroke="var(--panel)" stroke-width="1.5"/>`;
+    s += `<circle cx="${X(tcur)}" cy="${Yc(toU('cp', pc.cp))}" r="4" fill="var(--ink)" stroke="var(--panel)" stroke-width="1.5"/>`;
   }
   s += `<g transform="translate(${pad.l+8},${pad.t+10})"><line x1="0" x2="18" y1="0" y2="0" stroke="${col}" stroke-width="2.2"/><text x="23" y="3">density</text><line x1="80" x2="98" y1="0" y2="0" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="5 4"/><text x="103" y="3">specific heat</text></g>`;
   svg.innerHTML = s;
@@ -696,10 +842,26 @@ $('fluid').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
   fluid = b.dataset.f;
   document.querySelectorAll('#fluid button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  pctRange();
   update();
 });
 const link = (a, b) => { $(a).addEventListener('input', () => { $(b).value = $(a).value; update(); }); $(b).addEventListener('input', () => { $(a).value = $(b).value; update(); }); };
 link('pct', 'pctr'); link('temp', 'tempr');
+// switching between mass and volume converts the value with the ASHRAE table and changes data set
+function setBasis(b){
+  if (b === basis) return;
+  const f = fluid === 'w' ? 'eg' : fluid, raw = parseFloat($('pct').value);
+  basis = b; $('pctu').value = b;
+  if (Number.isFinite(raw)){
+    const v = Math.min(60, b === 'vol' ? m2v(f, raw) : v2m(f, raw));
+    $('pct').value = $('pctr').value = +v.toFixed(1);
+  }
+  pctRange();
+  try { localStorage.setItem('fp-conc', b); } catch (_) {}
+  update();
+}
+$('pctu').addEventListener('change', () => setBasis($('pctu').value));
+try { if (localStorage.getItem('fp-conc') === 'vol') setBasis('vol'); } catch (_) {}
 
 // Coefficient tables, generated from the same values used in the calculation
 const num = v => v === 0 ? '0' : Number(v.toPrecision(7)).toExponential().replace('e+0', '').replace('e', 'e');
@@ -716,11 +878,42 @@ for (const f of ['eg', 'pg']){
     coefTable('Specific heat c<sub>p</sub> [J/kg·K]', g.cp, ...ij) +
     coefTable('Freezing point [K]', [g.tf], () => 'i=0', j => 'j=' + j);
 }
+for (const f of ['eg', 'pg']){
+  const g = CV[f], ij = [i => 'i=' + i, j => 'j=' + j];
+  $('cv' + f).innerHTML =
+    `<p class="sub">T<sub>b</sub> = ${g.Tb} K · x<sub>b</sub> = ${g.xb} (volume fraction)</p>` +
+    coefTable('Density ρ [kg/m³]', g.rho, ...ij) +
+    coefTable('Specific heat c<sub>p</sub> [J/kg·K]', g.cp, ...ij) +
+    coefTable('Freezing point: ln T<sub>f</sub> [K]', [g.tf], () => 'i=0', j => 'j=' + j);
+}
 $('cw').innerHTML = coefTable('Coefficients a<sub>k</sub>', [C.w_cp], () => '', k => 'a' + k);
 ['flow','unit','t1','t2','tref','qin','qunit','hdir'].forEach(id => $(id).addEventListener('input', update));
 $('solve').addEventListener('click', e => { const b = e.target.closest('button'); if (b && b.dataset.s !== solveFor) setSolve(b.dataset.s); });
 setSolve('q');
 update();
+// unit switch: liquids
+(() => {
+  const val = el => { const v = parseFloat(el.value); return Number.isFinite(v) ? v : parseFloat(el.dataset.last); };
+  const put = (el, v, a, b) => { if (el.value === '' && el.dataset.last){ el.dataset.last = v; } else conv(el, v, a, b); };
+  UNIT_HOOKS.push({
+    get: () => ({ temp: toSI('T', parseFloat($('temp').value)), t1: toSI('T', val($('t1'))), t2: toSI('T', val($('t2'))),
+                  q: val($('qin')) * Q_UNITS[$('qunit').value][0], flow: val($('flow')), unit: $('unit').value }),
+    set: (st, sysChanged) => {
+      const lo = Math.round(toU('T', -50)), hi = Math.round(toU('T', 100)), step = TU === 'F' ? 1 : 0.5;
+      for (const id of ['temp', 'tempr']){ const el = $(id); el.min = lo; el.max = hi; el.step = step; }
+      if (Number.isFinite(st.temp)){ conv($('temp'), rnd(toU('T', st.temp), 2)); $('tempr').value = $('temp').value; }
+      if (Number.isFinite(st.t1)) put($('t1'), rnd(toU('T', st.t1), 2));
+      if (Number.isFinite(st.t2)) put($('t2'), rnd(toU('T', st.t2), 2));
+      const qu = $('qunit').value, nq = !sysChanged ? qu : US ? (['kw', 'w', 'kcalh'].includes(qu) ? 'ton' : qu) : (['ton', 'btuh', 'mbh'].includes(qu) ? 'kw' : qu);
+      $('qunit').value = nq;
+      if (Number.isFinite(st.q)) put($('qin'), +(st.q / Q_UNITS[nq][0]).toPrecision(6), qu, nq);
+      const u = st.unit, nu = !sysChanged ? u : US ? (VOL_F[u] && u !== 'gpm' ? 'gpm' : MASS_F[u] && u !== 'lbh' ? 'lbh' : u) : (u === 'gpm' ? 'm3h' : u === 'lbh' ? 'kgh' : u);
+      $('unit').value = nu;
+      if (Number.isFinite(st.flow) && nu !== u) put($('flow'), +(st.flow * (VOL_F[u] || MASS_F[u]) / (VOL_F[nu] || MASS_F[nu])).toPrecision(6), u, nu);
+      update();
+    }
+  });
+})();
 
 /* ---------- Moist air (ASHRAE Fundamentals 2017, ch. 1) ---------- */
 // Saturation pressure [kPa], Hyland-Wexler; t in °C
@@ -756,7 +949,7 @@ function airState(t, p, mode, val){
   } else if (mode === 'w'){
     W = val / 1000;
     if (!(W >= 0)) return {err: "Humidity ratio must be positive."};
-    if (W > Ws * 1.000001) return {err: `At ${fmt(t,1)} °C the maximum humidity ratio (saturation) is ${fmt(Ws*1000,2)} g/kg.`};
+    if (W > Ws * 1.000001) return {err: `At ${fT(t, 1)} the maximum humidity ratio (saturation) is ${fq('W', Ws*1000, 2, 1)}`};
   } else {
     if (!(val <= t + 1e-9)) return {err: 'The wet-bulb temperature cannot exceed the dry-bulb temperature.'};
     W = WfromWB(t, val, p);
@@ -770,30 +963,36 @@ function airState(t, p, mode, val){
 }
 
 let amode = 'rh';
-const MODES = { wb: ['Wet-bulb temperature', '°C', 18.7], rh: ['Relative humidity', '%', 50], w: ['Humidity ratio', 'g/kg d.a.', 10.5] };
+const MODES = { wb: ['Wet-bulb temperature', 'T', 18.7], rh: ['Relative humidity', null, 50], w: ['Humidity ratio', 'W', 10.5] };   // default values in SI
+const aU = m => MODES[m][1] ? uL(MODES[m][1]) : '%';
+function avUnit(){ const t = amode === 'wb'; $('aval-tu').hidden = !t; $('aval-u').hidden = t; $('aval-u').textContent = aU(amode); }
+// second input: displayed value ↔ SI (°C, %, g/kg)
+const avSI = (m, v) => MODES[m][1] ? toSI(MODES[m][1], v) : v;
+const avU = (m, v) => MODES[m][1] ? toU(MODES[m][1], v) : v;
+function airIn(){ return { t: toSI('T', parseFloat($('tdb').value)), p: toSI('pa', parseFloat($('pres').value)), val: avSI(amode, parseFloat($('aval').value)) }; }
 function airUpdate(){
-  const t = parseFloat($('tdb').value), p = parseFloat($('pres').value), val = parseFloat($('aval').value);
+  const { t, p, val } = airIn();
   const ids = ['a-tdb','a-twb','a-tdp','a-rh','a-w','a-mu','a-h','a-v','a-rho','a-pw','a-pws','a-cp'];
   const fail = m => { ids.forEach(id => $(id).textContent = '—'); $('msg3').textContent = m; $('msg3').hidden = false; drawPsy(null, p); };
   if (![t, p, val].every(Number.isFinite)) return fail('Enter dry-bulb temperature, pressure and the second input.');
-  if (t < -60 || t > 100) return fail('Dry-bulb temperature out of range: use values between −60 and 100 °C.');
-  if (p < 50 || p > 120) return fail('Pressure out of range: use values between 50 and 120 kPa.');
+  if (t < -60 || t > 100) return fail(`Dry-bulb temperature out of range: use values between ${fmt(toU('T', -60), 0)} and ${fT(100, 0)}.`);
+  if (p < 50 || p > 120) return fail(`Pressure out of range: use values between ${fmt(toU('pa', 50), US ? 2 : 0)} and ${fq('pa', 120, 0, 2)}.`);
   if (pws(t) >= p) return fail('At this temperature and pressure water boils: the psychrometric calculation does not apply.');
   const s = airState(t, p, amode, val);
   if (s.err) return fail(s.err);
   $('msg3').hidden = true;
-  $('a-tdb').textContent = fmt(s.t, 1) + ' °C';
-  $('a-twb').textContent = fmt(s.twb, 2) + ' °C';
-  $('a-tdp').textContent = Number.isFinite(s.tdp) ? fmt(s.tdp, 2) + ' °C' + (s.tdp < 0 ? ' (frost point)' : '') : '—';
+  $('a-tdb').textContent = fT(s.t, 1);
+  $('a-twb').textContent = fT(s.twb, 2);
+  $('a-tdp').textContent = Number.isFinite(s.tdp) ? fT(s.tdp, 2) + (s.tdp < 0 ? ' (frost point)' : '') : '—';
   $('a-rh').textContent = fmt(s.rh, 1) + ' %';
-  $('a-w').textContent = fmt(s.W*1000, 2) + ' g/kg d.a.';
+  $('a-w').textContent = fq('W', s.W*1000, 2, 1);
   $('a-mu').textContent = fmt(s.mu*100, 1) + ' %';
-  $('a-h').textContent = fmt(s.h, 2) + ' kJ/kg d.a.';
-  $('a-v').textContent = fmt(s.v, 4) + ' m³/kg d.a.';
-  $('a-rho').textContent = fmt(s.rho, 4) + ' kg/m³';
-  $('a-pw').textContent = fmt(s.pw*1000, 0) + ' Pa';
-  $('a-pws').textContent = fmt(s.ps*1000, 0) + ' Pa';
-  $('a-cp').textContent = fmt(s.cp, 4) + ' kJ/kg·K';
+  $('a-h').textContent = fq('ha', s.h, 2);
+  $('a-v').textContent = fq('va', s.v, 4, 3);
+  $('a-rho').textContent = fq('rho', s.rho, 4, 5);
+  $('a-pw').textContent = fq('pv', s.pw*1000, 0, 4);
+  $('a-pws').textContent = fq('pv', s.ps*1000, 0, 4);
+  $('a-cp').textContent = fq('cp', s.cp, 4);
   ids.forEach(id => $(id).classList.remove('in'));
   $({wb: 'a-twb', rh: 'a-rh', w: 'a-w'}[amode]).classList.add('in'); $('a-tdb').classList.add('in');
   drawPsy(s, p);
@@ -802,84 +1001,107 @@ function airUpdate(){
 function drawPsy(s, p){
   const svg = $('psy'), W = 560, H = 410, pad = {l: 14, r: 40, t: 24, b: 40};
   if (!Number.isFinite(p) || p < 50) { svg.innerHTML = ''; return; }
-  const tmin = s ? Math.min(-10, Math.floor((s.tdp - 3)/5)*5) : -10;
-  const tmax = s ? Math.max(45, Math.ceil((s.t + 3)/5)*5) : 45;
-  const ymax = s ? Math.max(30, Math.ceil((s.W*1000 + 3)/5)*5) : 30;
-  const X = t => pad.l + (t - tmin)/(tmax - tmin)*(W - pad.l - pad.r);
-  const Y = w => H - pad.b - w/ymax*(H - pad.t - pad.b);
-  const clipW = w => Math.min(w*1000, ymax);
+  // axis limits and grid steps in the displayed units (°C, g/kg or °F, gr/lb)
+  const F = TU === 'F', tS = F ? 10 : 5, tL = F ? 20 : 10, wS = US ? 20 : 5, mT = F ? 5 : 3, mW = US ? 20 : 3;
+  const [tb0, tb1] = { C: [-10, 45], F: [10, 120], K: [260, 320] }[TU];
+  const tdpD = s && Number.isFinite(s.tdp) ? toU('T', s.tdp) : null;
+  const tmin = Math.min(tb0, tdpD !== null ? Math.floor((tdpD - mT)/tS)*tS : Infinity);
+  const tmax = Math.max(tb1, s ? Math.ceil((toU('T', s.t) + mT)/tS)*tS : -Infinity);
+  const ymax = Math.max(US ? 220 : 30, s ? Math.ceil((toU('W', s.W*1000) + mW)/wS)*wS : -Infinity);
+  const tminS = toSI('T', tmin), tmaxS = toSI('T', tmax);
+  const X = t => pad.l + (toU('T', t) - tmin)/(tmax - tmin)*(W - pad.l - pad.r);   // t in °C
+  const Y = w => H - pad.b - w/ymax*(H - pad.t - pad.b);                              // w in displayed unit
+  const Yk = w => Y(toU('W', w*1000));                                                 // w in kg/kg
+  const clipW = w => Math.min(toU('W', w*1000), ymax);
   let g = `<defs><clipPath id="pc"><rect x="${pad.l}" y="${pad.t}" width="${W-pad.l-pad.r}" height="${H-pad.t-pad.b}"/></clipPath></defs>`;
   // grid
-  for (let t = tmin; t <= tmax; t += 5){
-    g += `<line x1="${X(t)}" x2="${X(t)}" y1="${pad.t}" y2="${H-pad.b}" stroke="var(--line)" stroke-width="${t % 10 ? .5 : 1}"/>`;
-    if (t % 10 === 0) g += `<text x="${X(t)}" y="${H-pad.b+14}" text-anchor="middle">${t}</text>`;
+  for (let td = tmin; td <= tmax; td += tS){
+    const t = toSI('T', td);
+    g += `<line x1="${X(t)}" x2="${X(t)}" y1="${pad.t}" y2="${H-pad.b}" stroke="var(--line)" stroke-width="${td % tL ? .5 : 1}"/>`;
+    if (td % tL === 0) g += `<text x="${X(t)}" y="${H-pad.b+14}" text-anchor="middle">${td}</text>`;
   }
-  for (let w = 0; w <= ymax; w += 5){
+  for (let w = 0; w <= ymax; w += wS){
     g += `<line x1="${pad.l}" x2="${W-pad.r}" y1="${Y(w)}" y2="${Y(w)}" stroke="var(--line)" stroke-width=".5"/>`;
     g += `<text x="${W-pad.r+6}" y="${Y(w)+3}">${w}</text>`;
   }
-  g += `<text x="${(W+pad.l-pad.r)/2}" y="${H-6}" text-anchor="middle">dry-bulb temperature °C</text>`;
-  g += `<text x="${W-2}" y="${pad.t-10}" text-anchor="end">x [g/kg]</text>`;
-  // constant-enthalpy lines
+  g += `<text x="${(W+pad.l-pad.r)/2}" y="${H-6}" text-anchor="middle">dry-bulb temperature ${uL('T')}</text>`;
+  g += `<text x="${W-2}" y="${pad.t-10}" text-anchor="end">x [${US ? 'gr/lb' : 'g/kg'}]</text>`;
+  // constant-enthalpy lines (labels in the displayed unit)
   let lines = '';
-  for (let h = -10; h <= 160; h += 10){
+  const [h0, h1, hs] = US ? [0, 70, 5] : [-10, 160, 10];
+  for (let hd = h0; hd <= h1; hd += hs){
+    const h = toSI('ha', hd);
     const tsat = bisect(t => enth(t, Wsat(t, p)) - h, -60, 99);
     const t0 = h / 1.006;
-    if (tsat > tmax || t0 < tmin) continue;
+    if (tsat > tmaxS || t0 < tminS) continue;
     lines += `<line x1="${X(tsat)}" y1="${Y(clipW(Wsat(tsat,p)))}" x2="${X(t0)}" y2="${Y(0)}" stroke="var(--muted)" stroke-width=".5" stroke-dasharray="1 3"/>`;
-    if (Wsat(tsat,p)*1000 < ymax - 1 && tsat > tmin + 2) lines += `<text x="${X(tsat)-4}" y="${Y(Wsat(tsat,p)*1000)-4}" text-anchor="end" style="font-size:9px">${h}</text>`;
+    if (toU('W', Wsat(tsat,p)*1000) < ymax - (US ? 7 : 1) && toU('T', tsat) > tmin + (F ? 4 : 2)) lines += `<text x="${X(tsat)-4}" y="${Yk(Wsat(tsat,p))-4}" text-anchor="end" style="font-size:9px">${hd}</text>`;
   }
   // relative humidity curves
   for (let rh = 10; rh <= 100; rh += 10){
     let d = '', lastT = null;
     for (let k = 0; k <= 200; k++){
-      const t = tmin + (tmax - tmin)*k/200;
+      const t = tminS + (tmaxS - tminS)*k/200;
       if (pws(t) >= p) break;
-      const w = Wfromp(rh/100*pws(t), p)*1000;
+      const w = toU('W', Wfromp(rh/100*pws(t), p)*1000);
       if (w > ymax){ break; }
       d += (d ? 'L' : 'M') + X(t).toFixed(1) + ' ' + Y(w).toFixed(1); lastT = t;
     }
     const sat = rh === 100;
     lines += `<path d="${d}" fill="none" stroke="${sat ? 'var(--ink)' : 'var(--accent)'}" stroke-width="${sat ? 1.8 : .8}" opacity="${sat ? 1 : .55}"/>`;
     if (!sat && lastT !== null){
-      const tl = tmax - 0.5, wl = Wfromp(rh/100*pws(tl), p)*1000;
-      if (wl < ymax - 1.5 && pws(tl) < p) lines += `<text x="${X(tl)}" y="${Y(wl)-3}" text-anchor="end" style="font-size:9px">${rh}%</text>`;
+      const tl = tmaxS - 0.5 / (F ? 1.8 : 1), wl = toU('W', Wfromp(rh/100*pws(tl), p)*1000);
+      if (wl < ymax - (US ? 10 : 1.5) && pws(tl) < p) lines += `<text x="${X(tl)}" y="${Y(wl)-3}" text-anchor="end" style="font-size:9px">${rh}%</text>`;
     }
   }
   g += `<g clip-path="url(#pc)">${lines}</g>`;
   if (s){
-    const px = X(s.t), py = Y(s.W*1000);
+    const px = X(s.t), py = Yk(s.W);
     g += `<line x1="${px}" x2="${px}" y1="${py}" y2="${H-pad.b}" stroke="var(--warn)" stroke-width="1" stroke-dasharray="3 3"/>`;
     g += `<line x1="${Number.isFinite(s.tdp) ? X(s.tdp) : px}" x2="${W-pad.r}" y1="${py}" y2="${py}" stroke="var(--warn)" stroke-width="1" stroke-dasharray="3 3"/>`;
-    const ws = Wsat(s.twb, p)*1000;
+    const ws = toU('W', Wsat(s.twb, p)*1000);
     g += `<line x1="${px}" y1="${py}" x2="${X(s.twb)}" y2="${Y(ws)}" stroke="var(--warn)" stroke-width="1"/>`;
     if (Number.isFinite(s.tdp)) g += `<circle cx="${X(s.tdp)}" cy="${py}" r="3" fill="var(--panel)" stroke="var(--warn)" stroke-width="1.5"/><text x="${X(s.tdp)-5}" y="${py+12}" text-anchor="end" style="font-size:9px">dew point</text>`;
     g += `<circle cx="${X(s.twb)}" cy="${Y(ws)}" r="3" fill="var(--panel)" stroke="var(--warn)" stroke-width="1.5"/><text x="${X(s.twb)-5}" y="${Y(ws)-6}" text-anchor="end" style="font-size:9px">wet bulb</text>`;
     g += `<circle cx="${px}" cy="${py}" r="5.5" fill="var(--warn)" stroke="var(--panel)" stroke-width="2"/>`;
   }
-  g += `<g transform="translate(${pad.l+8},${pad.t+12})" style="font-size:9px"><line x1="0" x2="16" y1="0" y2="0" stroke="var(--accent)" opacity=".7"/><text x="20" y="3">relative humidity</text><line x1="0" x2="16" y1="13" y2="13" stroke="var(--muted)" stroke-dasharray="1 3"/><text x="20" y="16">enthalpy kJ/kg d.a.</text></g>`;
+  g += `<g transform="translate(${pad.l+8},${pad.t+12})" style="font-size:9px"><line x1="0" x2="16" y1="0" y2="0" stroke="var(--accent)" opacity=".7"/><text x="20" y="3">relative humidity</text><line x1="0" x2="16" y1="13" y2="13" stroke="var(--muted)" stroke-dasharray="1 3"/><text x="20" y="16">enthalpy ${uL('ha')}</text></g>`;
   svg.innerHTML = g;
 }
 
 $('amode').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b || b.dataset.m === amode) return;
-  const t = parseFloat($('tdb').value), p = parseFloat($('pres').value), cur = parseFloat($('aval').value);
+  const { t, p, val: cur } = airIn();
   const s = [t, p, cur].every(Number.isFinite) ? airState(t, p, amode, cur) : null;
   amode = b.dataset.m;
   document.querySelectorAll('#amode button').forEach(x => x.setAttribute('aria-pressed', x === b));
-  const [lbl, u, def] = MODES[amode];
-  $('aval-lbl').textContent = lbl; $('aval-u').textContent = u;
+  const [lbl, , def] = MODES[amode];
+  $('aval-lbl').textContent = lbl; avUnit();
   // convert the current value to the new input so the state point does not change
-  $('aval').value = s && !s.err ? (amode === 'wb' ? s.twb.toFixed(2) : amode === 'rh' ? s.rh.toFixed(1) : (s.W*1000).toFixed(2)) : def;
+  $('aval').value = s && !s.err ? (amode === 'wb' ? rnd(toU('T', s.twb), 2) : amode === 'rh' ? s.rh.toFixed(1) : rnd(toU('W', s.W*1000), 2)) : rnd(avU(amode, def), 2);
   airUpdate();
 });
 $('alt').addEventListener('input', () => {
-  const z = parseFloat($('alt').value);
-  if (Number.isFinite(z) && z > -500 && z < 11000) $('pres').value = (101.325 * Math.pow(1 - 2.25577e-5*z, 5.2559)).toFixed(3);
+  const z = toSI('z', parseFloat($('alt').value));
+  if (Number.isFinite(z) && z > -500 && z < 11000) $('pres').value = toU('pa', 101.325 * Math.pow(1 - 2.25577e-5*z, 5.2559)).toFixed(3);
   airUpdate();
 });
 ['tdb','pres','aval'].forEach(id => $(id).addEventListener('input', airUpdate));
 airUpdate();
+// unit switch: moist air
+UNIT_HOOKS.push({
+  get: () => Object.assign(airIn(), { z: toSI('z', parseFloat($('alt').value)) }),
+  set: st => {
+    $('pres').min = rnd(toU('pa', 50), 2); $('pres').max = rnd(toU('pa', 120), 2);
+    if (Number.isFinite(st.t)) conv($('tdb'), rnd(toU('T', st.t), 2));
+    if (Number.isFinite(st.p)) conv($('pres'), toU('pa', st.p).toFixed(3));
+    if (Number.isFinite(st.val) && amode !== 'rh') conv($('aval'), rnd(avU(amode, st.val), 2), amode + TAG_OLD, amode + TAG_NEW);
+    if (Number.isFinite(st.z)) conv($('alt'), rnd(toU('z', st.z), 0));
+    avUnit();
+    $('a-note').textContent = US ? 'Enthalpy, humidity ratio and volume are per lb of dry air; enthalpy referred to dry air at 0 °F (ASHRAE IP).' : 'Enthalpy, humidity ratio and volume are per kg of dry air.';
+    airUpdate();
+  }
+});
 /* ---------- Page navigation ---------- */
 const SUB = {
   liquidi: 'Density and specific heat of water and water‑glycol mixtures, with the heat duty of a flow between two temperatures.',
@@ -931,6 +1153,8 @@ const RF = (() => {
     return [i, w];
   }
   const F = {};
+  // formatting of limits in error messages (replaced by the user interface for the chosen unit system)
+  const H = { T: v => v.toFixed(0) + ' °C', P: v => fmtP(v) + ' bar a' };
   function prep(D){
     const S = D.sat, c = k => S.map(r => r[k]);
     D.S = { lp: c(0), Tb: c(1), Td: c(2), lrl: S.map(r => Math.log(r[3])), lrv: S.map(r => Math.log(r[4])),
@@ -978,17 +1202,17 @@ const RF = (() => {
   // State from p [bar] and T [°C]
   function statePT(D, p, T){
     if (!(p > 0) || !Number.isFinite(T)) return { err: 'Enter pressure and temperature.' };
-    if (T > D.Tmax + 1e-9) return { err: `Temperature above the table limit (${D.Tmax.toFixed(0)} °C).` };
-    if (p < D.pmin * 0.9999) return { err: `Pressure below the table limit (${fmtP(D.pmin)} bar a, saturation at ${D.Tmin.toFixed(0)} °C).` };
+    if (T > D.Tmax + 1e-9) return { err: `Temperature above the table limit (${H.T(D.Tmax)}).` };
+    if (p < D.pmin * 0.9999) return { err: `Pressure below the table limit (${H.P(D.pmin)}, saturation at ${H.T(D.Tmin)}).` };
     if (p >= D.pc){
-      if (!D.sc) return { err: `Pressure above the critical pressure (${fmtP(D.pc)} bar): the fluid is supercritical, outside the table range.` };
+      if (!D.sc) return { err: `Pressure above the critical pressure (${H.P(D.pc)}): the fluid is supercritical, outside the table range.` };
       const sc = D.sc, x = Math.log10(p);
-      if (x > sc.p[sc.p.length - 1] + 1e-9) return { err: `Pressure above the table limit (${fmtP(10**sc.p[sc.p.length-1])} bar).` };
-      if (T < sc.T[0]) return { err: `Temperature below the limit of the supercritical table (${sc.T[0]} °C).` };
+      if (x > sc.p[sc.p.length - 1] + 1e-9) return { err: `Pressure above the table limit (${H.P(10**sc.p[sc.p.length-1])}).` };
+      if (T < sc.T[0]) return { err: `Temperature below the limit of the supercritical table (${H.T(sc.T[0])}).` };
       const st = grid2(D, sc.p, sc.d, sc.T, x, T);
       return Object.assign(st, { region: 'sc', p, T });
     }
-    if (p > D.psat) return { err: `Pressure too close to the critical pressure (${fmtP(D.pc)} bar): region not covered by the table.` };
+    if (p > D.psat) return { err: `Pressure too close to the critical pressure (${H.P(D.pc)}): region not covered by the table.` };
     const s = satP(D, p), x = Math.log10(p);
     if (T >= s.Td + (D.mix ? 0 : 1e-3)){
       const u = (T - s.Td) / (D.Tmax - s.Td);
@@ -997,7 +1221,7 @@ const RF = (() => {
     }
     if (T <= s.Tb - (D.mix ? 0 : 1e-3)){
       const lo = Math.min(D.Tmin, s.Tb);
-      if (T < lo - 1e-9) return { err: `Temperature below the table limit (${D.Tmin.toFixed(0)} °C).` };
+      if (T < lo - 1e-9) return { err: `Temperature below the table limit (${H.T(D.Tmin)}).` };
       const u = s.Tb - lo > 1e-9 ? (s.Tb - T) / (s.Tb - lo) : 0;
       const st = grid2(D, D.pv, D.liq, D.WL, x, Math.sqrt(Math.max(0, Math.min(1, u))));
       return Object.assign(st, { region: 'l', p, T, sat: s, SC: s.Tb - T });
@@ -1006,13 +1230,13 @@ const RF = (() => {
   }
   // Two-phase state from p [bar] and quality x [0..1]
   function stateQ(D, p, q){
-    if (!(p >= D.pmin * 0.9999 && p <= D.psat)) return { err: `Pressure outside the saturation range (${fmtP(D.pmin)}–${fmtP(D.psat)} bar a).` };
+    if (!(p >= D.pmin * 0.9999 && p <= D.psat)) return { err: `Pressure outside the saturation range (${H.P(D.pmin)} to ${H.P(D.psat)}).` };
     const s = satP(D, p);
     const v = (1 - q) / s.rl + q / s.rv;
     return { region: 'tp', p, q, T: s.Tb + q * (s.Td - s.Tb), h: s.hl + q * (s.hv - s.hl), s: s.sl + q * (s.sv - s.sl), rho: 1 / v, sat: s };
   }
   const fmtP = v => v.toLocaleString('en-GB', { maximumFractionDigits: v < 10 ? 3 : 2 });
-  return { load, F, satP, pAtT, statePT, stateQ, lag4 };
+  return { load, F, satP, pAtT, statePT, stateQ, lag4, H };
 })();
 if (typeof module !== 'undefined') module.exports = RF;
 
@@ -1037,10 +1261,10 @@ const INFO = {
 };
 const GRP = { HFC: 'HFC', HFO: 'HFOs and low-GWP blends', Nat: 'Natural refrigerants' };
 const PATM = 1.01325;
-const PU = { bara: ['bar a', 1, 0], barg: ['bar g', 1, PATM], kpa: ['kPa a', 0.01, 0], mpa: ['MPa a', 10, 0], psig: ['psig', 0.0689476, PATM] };
+const PU = { bara: ['bar a', 1, 0], barg: ['bar g', 1, PATM], kpa: ['kPa a', 0.01, 0], mpa: ['MPa a', 10, 0], psig: ['psig', PSI_BAR, PATM], psia: ['psia', PSI_BAR, 0] };
 const toBar = (v, u) => v * PU[u][1] + PU[u][2];
 const fromBar = (p, u) => (p - PU[u][2]) / PU[u][1];
-const pDec = u => u === 'kpa' ? 1 : u === 'mpa' ? 4 : u === 'psig' ? 1 : 3;
+const pDec = u => u === 'kpa' ? 1 : u === 'mpa' ? 4 : u === 'psig' ? 1 : u === 'psia' ? 2 : 3;
 const fmtPu = (p, u) => fmt(fromBar(p, u), pDec(u));
 const sig = (v, n) => { if (!Number.isFinite(v)) return '—'; const d = Math.max(0, n - 1 - Math.floor(Math.log10(Math.abs(v)))); return fmt(v, Math.min(d, 8)); };
 
@@ -1052,11 +1276,15 @@ for (const g of Object.keys(GRP)){
 }
 sel.value = 'R410A';
 let rmode = 'sat', given = 'T', pu = 'bara';
+RF.H.T = v => fT(v, 0);
+RF.H.P = v => fmtPu(v, pu) + ' ' + PU[pu][0];
+const pcStr = d => US ? fmt(d.pc / PSI_BAR, 1) + ' psia' : fmt(d.pc, 2) + ' bar';
+const fU = (k, v, d) => fmt(toU(k, v), d);         // number only, displayed unit
 const D = () => RF.F[sel.value];
 
 function info(){
   const d = D(), i = INFO[sel.value];
-  $('r-info').innerHTML = `<b>${i.t}</b> · ${i.c} · GWP ${i.gwp} · class ${i.cls} · T<sub>c</sub> ${fmt(d.Tc, 1)} °C · p<sub>c</sub> ${fmt(d.pc, 2)} bar`;
+  $('r-info').innerHTML = `<b>${i.t}</b> · ${i.c} · GWP ${i.gwp} · class ${i.cls} · T<sub>c</sub> ${fT(d.Tc, 1)} · p<sub>c</sub> ${pcStr(d)}`;
 }
 function vis(){
   const mix = D().mix;
@@ -1073,37 +1301,41 @@ function clearOut(m){
   $('r-tab').innerHTML = ''; $('r-foot').textContent = '';
   $('r-msg').textContent = m; $('r-msg').hidden = !m;
 }
-function pSub(p){ return pu === 'bara' ? fmt(p - PATM, 3) + ' bar g' : fmt(p, 3) + ' bar a'; }
+function pSub(p){
+  if (pu === 'psig') return fmt(p / PSI_BAR, 2) + ' psia';
+  if (pu === 'psia') return fmt((p - PATM) / PSI_BAR, 1) + ' psig';
+  return pu === 'bara' ? fmt(p - PATM, 3) + ' bar g' : fmt(p, 3) + ' bar a';
+}
 function nearCrit(d, p){ return p > 0.95 * d.pc && p < d.pc ? 'Close to the critical point: reduced accuracy.' : ''; }
 
 function satTable(d, s){
   const rows = [
-    ['Temperature', 'T', '°C', fmt(s.Tb, 2), fmt(s.Td, 2)],
-    ['Density', 'ρ', 'kg/m³', sig(s.rl, 5), sig(s.rv, 5)],
-    ['Specific volume', 'v', 'm³/kg', sig(1/s.rl, 4), sig(1/s.rv, 4)],
-    ['Enthalpy', 'h', 'kJ/kg', fmt(s.hl, 2), fmt(s.hv, 2)],
-    ['Entropy', 's', 'kJ/kg·K', fmt(s.sl, 4), fmt(s.sv, 4)],
-    ['Specific heat', 'c<sub>p</sub>', 'kJ/kg·K', fmt(s.cpl, 3), fmt(s.cpv, 3)]
+    ['Temperature', 'T', uL('T'), fU('T', s.Tb, 2), fU('T', s.Td, 2)],
+    ['Density', 'ρ', uL('rho'), sig(toU('rho', s.rl), 5), sig(toU('rho', s.rv), 5)],
+    ['Specific volume', 'v', uL('v'), sig(toU('v', 1/s.rl), 4), sig(toU('v', 1/s.rv), 4)],
+    ['Enthalpy', 'h', uL('h'), fU('h', s.hl, 2), fU('h', s.hv, 2)],
+    ['Entropy', 's', uL('cp'), fU('cp', s.sl, 4), fU('cp', s.sv, 4)],
+    ['Specific heat', 'c<sub>p</sub>', uL('cp'), fU('cp', s.cpl, US ? 4 : 3), fU('cp', s.cpv, US ? 4 : 3)]
   ];
   return `<table><thead><tr><th></th><th></th><th>${d.mix ? 'Saturated liquid (bubble)' : 'Saturated liquid'}</th><th>${d.mix ? 'Saturated vapour (dew)' : 'Saturated vapour'}</th></tr></thead><tbody>` +
     rows.map(r => `<tr><th>${r[0]} ${r[1]}</th><td class="u">${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td></tr>`).join('') + '</tbody></table>';
 }
 function stateTable(st, extra){
   const rows = [
-    ['Temperature T', '°C', (st.approx ? '≈ ' : '') + fmt(st.T, 2)],
+    ['Temperature T', uL('T'), (st.approx ? '≈ ' : '') + fU('T', st.T, 2)],
     ['Pressure p', PU[pu][0], fmtPu(st.p, pu)],
-    ['Density ρ', 'kg/m³', sig(st.rho, 5)],
-    ['Specific volume v', 'm³/kg', sig(1/st.rho, 4)],
-    ['Enthalpy h', 'kJ/kg', fmt(st.h, 2)],
-    ['Entropy s', 'kJ/kg·K', fmt(st.s, 4)]
+    ['Density ρ', uL('rho'), sig(toU('rho', st.rho), 5)],
+    ['Specific volume v', uL('v'), sig(toU('v', 1/st.rho), 4)],
+    ['Enthalpy h', uL('h'), fU('h', st.h, 2)],
+    ['Entropy s', uL('cp'), fU('cp', st.s, 4)]
   ];
-  if (st.cp !== undefined) rows.push(['Specific heat c<sub>p</sub>', 'kJ/kg·K', fmt(st.cp, 3)]);
+  if (st.cp !== undefined) rows.push(['Specific heat c<sub>p</sub>', uL('cp'), fU('cp', st.cp, US ? 4 : 3)]);
   return `<table><tbody>` + rows.concat(extra || []).map(r => `<tr><th>${r[0]}</th><td class="u">${r[1]}</td><td>${r[2]}</td></tr>`).join('') + '</tbody></table>';
 }
 
 function rUpdate(){
   vis(); info();
-  const d = D(), pin = toBar(parseFloat($('r-p').value), pu), T = parseFloat($('r-t').value), q = parseFloat($('r-q').value) / 100;
+  const d = D(), pin = toBar(parseFloat($('r-p').value), pu), T = toSI('T', parseFloat($('r-t').value)), q = parseFloat($('r-q').value) / 100;
   const marks = [];
   const fail = m => { clearOut(m); drawPH(d, marks); };
   if (rmode === 'sat'){
@@ -1113,7 +1345,7 @@ function rUpdate(){
       const ref = d.mix ? $('r-ref').value : 'd';
       p = RF.pAtT(d, T, ref);
       const lo = d.mix && ref === 'b' ? RF.satP(d, d.pmin).Tb : d.Tmin, hi = RF.satP(d, d.psat)[ref === 'b' ? 'Tb' : 'Td'];
-      if (!Number.isFinite(p)) return fail(`Temperature outside the saturation range of the table: ${fmt(Math.max(lo, d.Tmin), 1)} to ${fmt(hi, 1)} °C (critical T ${fmt(d.Tc, 1)} °C).`);
+      if (!Number.isFinite(p)) return fail(`Temperature outside the saturation range of the table: ${fU('T', Math.max(lo, d.Tmin), 1)} to ${fT(hi, 1)} (critical T ${fT(d.Tc, 1)}).`);
     } else {
       p = pin;
       if (!Number.isFinite(p)) return fail('Enter the pressure.');
@@ -1122,14 +1354,14 @@ function rUpdate(){
     const s = RF.satP(d, p);
     out(1, 'Saturation pressure', fmtPu(p, pu), PU[pu][0], pSub(p));
     if (d.mix){
-      out(2, 'Dew point T', fmt(s.Td, 2), '°C', 'saturated vapour, x = 100 %');
-      out(3, 'Bubble point T', fmt(s.Tb, 2), '°C', 'glide ' + fmt(s.Td - s.Tb, 2) + ' K');
+      out(2, 'Dew point T', fU('T', s.Td, 2), uL('T'), 'saturated vapour, x = 100 %');
+      out(3, 'Bubble point T', fU('T', s.Tb, 2), uL('T'), 'glide ' + fq('dT', s.Td - s.Tb, 2));
     } else {
-      out(2, 'Saturation T', fmt(s.Td, 2), '°C', fmt(s.Td + 273.15, 2) + ' K');
-      out(3, 'Latent heat r', fmt(s.hv - s.hl, 1), 'kJ/kg', 'h<sub>vap</sub> − h<sub>liq</sub>');
+      out(2, 'Saturation T', fU('T', s.Td, 2), uL('T'), TU === 'C' ? fmt(s.Td + 273.15, 2) + ' K' : fmt(s.Td, 2) + ' °C');
+      out(3, 'Latent heat r', fU('h', s.hv - s.hl, 1), uL('h'), 'h<sub>vap</sub> − h<sub>liq</sub>');
     }
     $('r-tab').innerHTML = satTable(d, s);
-    $('r-foot').innerHTML = (d.mix ? `Latent heat at this pressure: ${fmt(s.hv - s.hl, 1)} kJ/kg (vapour at dew point − liquid at bubble point). Mean temperature ${fmt((s.Tb + s.Td)/2, 2)} °C. ` : '') + nearCrit(d, p);
+    $('r-foot').innerHTML = (d.mix ? `Latent heat at this pressure: ${fq('h', s.hv - s.hl, 1)} (vapour at dew point − liquid at bubble point). Mean temperature ${fT((s.Tb + s.Td)/2, 2)}. ` : '') + nearCrit(d, p);
     $('r-msg').hidden = true;
     marks.push({ h: s.hl, p, k: 'l' }, { h: s.hv, p, k: 'v' });
     return drawPH(d, marks, p);
@@ -1140,9 +1372,9 @@ function rUpdate(){
     const st = RF.stateQ(d, pin, q);
     if (st.err) return fail(st.err);
     st.approx = d.mix && q > 0 && q < 1;
-    out(1, 'Temperature', (st.approx ? '≈ ' : '') + fmt(st.T, 2), '°C', d.mix ? `bubble ${fmt(st.sat.Tb, 2)} · dew ${fmt(st.sat.Td, 2)}` : 'saturation');
-    out(2, 'Enthalpy h', fmt(st.h, 2), 'kJ/kg', '');
-    out(3, 'Density ρ', sig(st.rho, 4), 'kg/m³', 'v = ' + sig(1/st.rho, 4) + ' m³/kg');
+    out(1, 'Temperature', (st.approx ? '≈ ' : '') + fU('T', st.T, 2), uL('T'), d.mix ? `bubble ${fU('T', st.sat.Tb, 2)} · dew ${fU('T', st.sat.Td, 2)}` : 'saturation');
+    out(2, 'Enthalpy h', fU('h', st.h, 2), uL('h'), '');
+    out(3, 'Density ρ', sig(toU('rho', st.rho), 4), uL('rho'), 'v = ' + sig(toU('v', 1/st.rho), 4) + ' ' + uL('v'));
     $('r-tab').innerHTML = stateTable(st) + satTable(d, st.sat);
     $('r-foot').textContent = (st.approx ? 'In zeotropic blends the two-phase temperature depends on quality: here it is estimated linearly between bubble and dew point. ' : '') + nearCrit(d, pin);
     $('r-msg').hidden = true;
@@ -1156,8 +1388,8 @@ function rUpdate(){
   if (st.region === 'tp'){
     const s = st.sat;
     clearOut(d.mix
-      ? `At ${fmtPu(pin, pu)} ${PU[pu][0]} the blend is two-phase between ${fmt(s.Tb, 2)} °C (bubble) and ${fmt(s.Td, 2)} °C (dew): pressure and temperature do not define the state. Use “Pressure & quality”.`
-      : `At ${fmtPu(pin, pu)} ${PU[pu][0]} the saturation temperature is ${fmt(s.Td, 2)} °C: the fluid is two-phase and the state depends on quality. Use “Pressure & quality”.`);
+      ? `At ${fmtPu(pin, pu)} ${PU[pu][0]} the blend is two-phase between ${fT(s.Tb, 2)} (bubble) and ${fT(s.Td, 2)} (dew): pressure and temperature do not define the state. Use “Pressure & quality”.`
+      : `At ${fmtPu(pin, pu)} ${PU[pu][0]} the saturation temperature is ${fT(s.Td, 2)}: the fluid is two-phase and the state depends on quality. Use “Pressure & quality”.`);
     marks.push({ h: s.hl, p: pin, k: 'l' }, { h: s.hv, p: pin, k: 'v' });
     return drawPH(d, marks, pin);
   }
@@ -1165,16 +1397,16 @@ function rUpdate(){
   out(1, 'State', `<span class="rstate" style="color:${RG[st.region][1]}">${RG[st.region][0]}</span>`, '', '');
   let extra = [];
   if (st.region === 'v'){
-    out(2, 'Superheat', fmt(st.SH, 2), 'K', `T − T<sub>dew</sub>`);
-    out(3, d.mix ? 'Dew point T' : 'Saturation T', fmt(st.sat.Td, 2), '°C', 'at this pressure');
-    extra = [[d.mix ? 'Dew point temperature' : 'Saturation temperature', '°C', fmt(st.sat.Td, 2)], ['Superheat SH', 'K', fmt(st.SH, 2)], ['Saturated vapour enthalpy', 'kJ/kg', fmt(st.sat.hv, 2)]];
+    out(2, 'Superheat', fU('dT', st.SH, 2), uL('dT'), `T − T<sub>dew</sub>`);
+    out(3, d.mix ? 'Dew point T' : 'Saturation T', fU('T', st.sat.Td, 2), uL('T'), 'at this pressure');
+    extra = [[d.mix ? 'Dew point temperature' : 'Saturation temperature', uL('T'), fU('T', st.sat.Td, 2)], ['Superheat SH', uL('dT'), fU('dT', st.SH, 2)], ['Saturated vapour enthalpy', uL('h'), fU('h', st.sat.hv, 2)]];
   } else if (st.region === 'l'){
-    out(2, 'Subcooling', fmt(st.SC, 2), 'K', `T<sub>bub</sub> − T`);
-    out(3, d.mix ? 'Bubble point T' : 'Saturation T', fmt(st.sat.Tb, 2), '°C', 'at this pressure');
-    extra = [[d.mix ? 'Bubble point temperature' : 'Saturation temperature', '°C', fmt(st.sat.Tb, 2)], ['Subcooling SC', 'K', fmt(st.SC, 2)], ['Saturated liquid enthalpy', 'kJ/kg', fmt(st.sat.hl, 2)]];
+    out(2, 'Subcooling', fU('dT', st.SC, 2), uL('dT'), `T<sub>bub</sub> − T`);
+    out(3, d.mix ? 'Bubble point T' : 'Saturation T', fU('T', st.sat.Tb, 2), uL('T'), 'at this pressure');
+    extra = [[d.mix ? 'Bubble point temperature' : 'Saturation temperature', uL('T'), fU('T', st.sat.Tb, 2)], ['Subcooling SC', uL('dT'), fU('dT', st.SC, 2)], ['Saturated liquid enthalpy', uL('h'), fU('h', st.sat.hl, 2)]];
   } else {
-    out(2, 'Enthalpy h', fmt(st.h, 2), 'kJ/kg', '');
-    out(3, 'Density ρ', sig(st.rho, 4), 'kg/m³', 'above p<sub>c</sub> = ' + fmt(d.pc, 2) + ' bar');
+    out(2, 'Enthalpy h', fU('h', st.h, 2), uL('h'), '');
+    out(3, 'Density ρ', sig(toU('rho', st.rho), 4), uL('rho'), 'above p<sub>c</sub> = ' + pcStr(d));
   }
   $('r-tab').innerHTML = stateTable(st, extra);
   $('r-foot').innerHTML = (st.region === 'l' ? 'Liquid: properties depend only weakly on pressure. ' : '') + nearCrit(d, pin);
@@ -1186,7 +1418,8 @@ function rUpdate(){
 /* p-h chart */
 const phCache = {};
 function phData(d){
-  if (phCache[d.name]) return phCache[d.name];
+  const key = d.name + '|' + unitTag();
+  if (phCache[key]) return phCache[key];
   const S = d.S, n = S.lp.length, dome = [];
   for (let i = 0; i < n; i++) dome.push([S.hl[i], 10**S.lp[i]]);
   for (let i = n - 1; i >= 0; i--) dome.push([S.hv[i], 10**S.lp[i]]);
@@ -1196,7 +1429,10 @@ function phData(d){
   const hmin = hlmin - 0.06 * (hvmax - hlmin);
   const iso = [];
   const P = Array.from({length: 90}, (_, k) => pmin * Math.pow(pmax / pmin, k / 89));
-  for (let T = Math.ceil(d.Tmin / 20) * 20; T <= d.Tmax + 1e-9; T += 20){
+  // isotherms every 20 °C / 20 K, or every 40 °F
+  const iS = TU === 'F' ? 40 : 20, iLo = toU('T', d.Tmin), iHi = toU('T', d.Tmax);
+  for (let TD = Math.ceil(iLo / iS) * iS; TD <= iHi + 1e-9; TD += iS){
+    const T = toSI('T', TD);
     const pts = [];
     for (const p of P){ const st = RF.statePT(d, p, T); if (!st.err && st.region !== 'tp') pts.push([st.h, p]); }
     const pb = RF.pAtT(d, T, 'b'), pd = RF.pAtT(d, T, 'd');
@@ -1207,11 +1443,11 @@ function phData(d){
     let lab = null;
     if (Number.isFinite(pb) && Number.isFinite(pd)){ lab = [(RF.satP(d, pb).hl + RF.satP(d, pd).hv) / 2, Math.sqrt(pb * pd), 'm']; }
     else if (pts.length){ const pt = pmin * Math.pow(pmax / pmin, 0.9); let b = pts[0]; for (const q of pts) if (Math.abs(Math.log(q[1] / pt)) < Math.abs(Math.log(b[1] / pt))) b = q; lab = [b[0], b[1], 'r']; }
-    if (pts.length > 1) iso.push({ T, pts, lab });
+    if (pts.length > 1) iso.push({ T: TD, pts, lab });
   }
   const ql = [];
   for (let x = 0.1; x < 0.95; x += 0.1){ const pts = []; for (let i = 0; i < n; i += 2) pts.push([S.hl[i] + x * (S.hv[i] - S.hl[i]), 10**S.lp[i]]); ql.push({ x, pts }); }
-  return phCache[d.name] = { dome, pmin, pmax, hmin, hmax, iso, ql };
+  return phCache[key] = { dome, pmin, pmax, hmin, hmax, iso, ql };
 }
 function niceStep(r){ const raw = r / 7, m = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / m; return (f < 1.5 ? 1 : f < 3.5 ? 2 : f < 7.5 ? 5 : 10) * m; }
 function drawPH(d, marks, pline){
@@ -1223,32 +1459,34 @@ function drawPH(d, marks, pline){
   const Y = p => H - pad.b - Math.log(p / pmin) / Math.log(pmax / pmin) * (H - pad.t - pad.b);
   const path = pts => pts.map((q, i) => (i ? 'L' : 'M') + X(q[0]).toFixed(1) + ' ' + Y(q[1]).toFixed(1)).join(' ');
   let s = `<defs><clipPath id="phc"><rect x="${pad.l}" y="${pad.t}" width="${W-pad.l-pad.r}" height="${H-pad.t-pad.b}"/></clipPath></defs>`;
-  const st = niceStep(hmax - hmin);
-  for (let h = Math.ceil(hmin / st) * st; h <= hmax; h += st){
-    s += `<line x1="${X(h)}" x2="${X(h)}" y1="${pad.t}" y2="${H-pad.b}" stroke="var(--line)" stroke-width=".6"/><text x="${X(h)}" y="${H-pad.b+14}" text-anchor="middle">${fmt(h, 0)}</text>`;
+  // grid in the displayed units: h in kJ/kg or Btu/lb, p in bar a or psia
+  const hlo = toU('h', hmin), hhi = toU('h', hmax), st = niceStep(hhi - hlo), pf = US ? PSI_BAR : 1;
+  for (let hd = Math.ceil(hlo / st) * st; hd <= hhi; hd += st){
+    const h = toSI('h', hd);
+    s += `<line x1="${X(h)}" x2="${X(h)}" y1="${pad.t}" y2="${H-pad.b}" stroke="var(--line)" stroke-width=".6"/><text x="${X(h)}" y="${H-pad.b+14}" text-anchor="middle">${fmt(hd, 0)}</text>`;
   }
-  for (let e = Math.floor(Math.log10(pmin)); e <= Math.ceil(Math.log10(pmax)); e++){
+  for (let e = Math.floor(Math.log10(pmin / pf)); e <= Math.ceil(Math.log10(pmax / pf)); e++){
     for (const m of [1, 2, 5]){
-      const p = m * 10**e; if (p < pmin * 0.999 || p > pmax * 1.001) continue;
-      s += `<line x1="${pad.l}" x2="${W-pad.r}" y1="${Y(p)}" y2="${Y(p)}" stroke="var(--line)" stroke-width="${m === 1 ? 1 : .5}"/><text x="${pad.l-6}" y="${Y(p)+3}" text-anchor="end">${fmt(p, p < 1 ? 1 : 0)}</text>`;
+      const pd = m * 10**e, p = pd * pf; if (p < pmin * 0.999 || p > pmax * 1.001) continue;
+      s += `<line x1="${pad.l}" x2="${W-pad.r}" y1="${Y(p)}" y2="${Y(p)}" stroke="var(--line)" stroke-width="${m === 1 ? 1 : .5}"/><text x="${pad.l-6}" y="${Y(p)+3}" text-anchor="end">${fmt(pd, pd < 1 ? 1 : 0)}</text>`;
     }
   }
-  s += `<text x="${(W+pad.l-pad.r)/2}" y="${H-6}" text-anchor="middle">enthalpy h [kJ/kg]</text><text x="4" y="11">p [bar a]</text>`;
+  s += `<text x="${(W+pad.l-pad.r)/2}" y="${H-6}" text-anchor="middle">enthalpy h [${uL('h')}]</text><text x="4" y="11">p [${US ? 'psia' : 'bar a'}]</text>`;
   let c = `<path d="${path(g0.dome)} Z" fill="var(--accent-soft)" stroke="none" opacity=".7"/>`;
   for (const q of g0.ql) c += `<path d="${path(q.pts)}" fill="none" stroke="var(--accent)" stroke-width=".6" stroke-dasharray="2 3" opacity=".7"/>`;
   for (const it of g0.iso){
     c += `<path d="${path(it.pts)}" fill="none" stroke="var(--muted)" stroke-width=".8"/>`;
     const L = it.lab;
     if (L) c += L[2] === 'm'
-      ? `<text x="${X(L[0])}" y="${Y(L[1]) - 3}" text-anchor="middle" class="isol">${it.T} °C</text>`
-      : `<text x="${X(L[0]) + 4}" y="${Y(L[1]) + 3}" class="isol">${it.T}°</text>`;
+      ? `<text x="${X(L[0])}" y="${Y(L[1]) - 3}" text-anchor="middle" class="isol">${fmt(it.T, 0)} ${uL('T')}</text>`
+      : `<text x="${X(L[0]) + 4}" y="${Y(L[1]) + 3}" class="isol">${fmt(it.T, 0)}${TU === 'K' ? '' : '°'}</text>`;
   }
   c += `<path d="${path(g0.dome)}" fill="none" stroke="var(--ink)" stroke-width="1.6"/>`;
   if (Number.isFinite(pline) && pline >= pmin && pline <= pmax) c += `<line x1="${pad.l}" x2="${W-pad.r}" y1="${Y(pline)}" y2="${Y(pline)}" stroke="var(--warn)" stroke-width="1" stroke-dasharray="4 3"/>`;
   if (marks.length === 2 && marks[0].k === 'l') c += `<line x1="${X(marks[0].h)}" x2="${X(marks[1].h)}" y1="${Y(marks[0].p)}" y2="${Y(marks[1].p)}" stroke="var(--warn)" stroke-width="2.2"/>`;
   for (const m of marks) if (m.p >= pmin && m.p <= pmax) c += `<circle cx="${X(m.h)}" cy="${Y(m.p)}" r="${marks.length === 1 ? 5.5 : 4.5}" fill="var(--warn)" stroke="var(--panel)" stroke-width="2"/>`;
   s += `<g clip-path="url(#phc)">${c}</g>`;
-  s += `<g transform="translate(${pad.l+10},${pad.t+14})" style="font-size:9px"><rect x="-6" y="-10" width="150" height="44" fill="var(--panel)" opacity=".85"/><line x1="0" x2="16" y1="0" y2="0" stroke="var(--ink)" stroke-width="1.6"/><text x="20" y="3">saturation curve</text><line x1="0" x2="16" y1="12" y2="12" stroke="var(--muted)"/><text x="20" y="15">isotherms [°C]</text><line x1="0" x2="16" y1="24" y2="24" stroke="var(--accent)" stroke-dasharray="2 3"/><text x="20" y="27">constant quality</text></g>`;
+  s += `<g transform="translate(${pad.l+10},${pad.t+14})" style="font-size:9px"><rect x="-6" y="-10" width="150" height="44" fill="var(--panel)" opacity=".85"/><line x1="0" x2="16" y1="0" y2="0" stroke="var(--ink)" stroke-width="1.6"/><text x="20" y="3">saturation curve</text><line x1="0" x2="16" y1="12" y2="12" stroke="var(--muted)"/><text x="20" y="15">isotherms [${uL('T')}]</text><line x1="0" x2="16" y1="24" y2="24" stroke="var(--accent)" stroke-dasharray="2 3"/><text x="20" y="27">constant quality</text></g>`;
   svg.innerHTML = s;
 }
 
@@ -1265,8 +1503,8 @@ $('r-given').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b || b.dataset.g === given) return;
   // convert the current input so the saturation state does not change
   const d = D();
-  if (given === 'T'){ const p = RF.pAtT(d, parseFloat($('r-t').value), d.mix ? $('r-ref').value : 'd'); if (Number.isFinite(p)) $('r-p').value = +fromBar(p, pu).toFixed(pDec(pu)); }
-  else { const p = toBar(parseFloat($('r-p').value), pu); if (p >= d.pmin && p <= d.psat){ const s = RF.satP(d, p), r = d.mix ? $('r-ref').value : 'd'; $('r-t').value = +(r === 'b' ? s.Tb : r === 'm' ? (s.Tb + s.Td)/2 : s.Td).toFixed(2); } }
+  if (given === 'T'){ const p = RF.pAtT(d, toSI('T', parseFloat($('r-t').value)), d.mix ? $('r-ref').value : 'd'); if (Number.isFinite(p)) $('r-p').value = +fromBar(p, pu).toFixed(pDec(pu)); }
+  else { const p = toBar(parseFloat($('r-p').value), pu); if (p >= d.pmin && p <= d.psat){ const s = RF.satP(d, p), r = d.mix ? $('r-ref').value : 'd'; $('r-t').value = rnd(toU('T', r === 'b' ? s.Tb : r === 'm' ? (s.Tb + s.Td)/2 : s.Td), 2); } }
   given = b.dataset.g; document.querySelectorAll('#r-given button').forEach(x => x.setAttribute('aria-pressed', x === b)); rUpdate();
 });
 $('r-pu').addEventListener('change', () => {
@@ -1277,6 +1515,31 @@ $('r-pu').addEventListener('change', () => {
 ['r-fl', 'r-ref'].forEach(id => $(id).addEventListener('change', rUpdate));
 ['r-p', 'r-t', 'r-q'].forEach(id => $(id).addEventListener('input', rUpdate));
 rUpdate();
+// unit switch: refrigerants (SI → bar a, US → psig, unless an absolute/gauge unit of the same system is already chosen)
+UNIT_HOOKS.push({
+  get: () => ({ T: toSI('T', parseFloat($('r-t').value)), p: toBar(parseFloat($('r-p').value), pu) }),
+  set: (st, sysChanged) => {
+    const isUS = pu === 'psig' || pu === 'psia', pu0 = pu;
+    if (sysChanged){ if (US && !isUS) pu = 'psig'; else if (!US && isUS) pu = 'bara'; }
+    $('r-pu').value = pu;
+    if (Number.isFinite(st.p)) conv($('r-p'), +fromBar(st.p, pu).toFixed(pDec(pu)), pu0, pu);
+    if (Number.isFinite(st.T)) conv($('r-t'), rnd(toU('T', st.T), 2));
+    $('r-chnote').textContent = `Logarithmic vertical axis. Isotherms every ${{ C: '20 °C', F: '40 °F', K: '20 K' }[TU]}, dashed lines of constant quality (10 %–90 %).`;
+    rUpdate();
+  }
+});
+})();
+
+/* ---------- Unit system at start-up: saved choice, or ?units=us in the address ---------- */
+(() => {
+  let sys = null;
+  try { sys = new URLSearchParams(location.search).get('units'); } catch (_) {}
+  if (sys !== 'us' && sys !== 'si'){ try { sys = localStorage.getItem('fp-units'); } catch (_) {} }
+  let tu = null;
+  try { tu = localStorage.getItem('fp-tu'); } catch (_) {}
+  const us = sys === 'us';
+  if (!['C', 'F', 'K'].includes(tu)) tu = us ? 'F' : 'C';
+  if (us || tu !== 'C') applyUnits(us, tu);
 })();
 </script>
 
